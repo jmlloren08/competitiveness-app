@@ -1,0 +1,31 @@
+.logoBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    height: 50px;
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .logoBar {
+        display: none;
+    }
+
+    .logo {
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logoBar {
+        display: none;
+    }
+
+    .logo {
+        margin: 5px 0;
+    }
+}
