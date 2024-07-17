@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Link, Head } from '@inertiajs/react';
+import React from 'react';
+import { Link } from '@inertiajs/react';
 import '../../css/NavBar.css';
 import ApplicationLogo from './ApplicationLogo';
 import NavLink from '@/Components/NavLink';
 
 export default function NavBar() {
+    const currentRoute = route().current();
 
     return (
         <div className="flex items-center">
@@ -18,19 +19,19 @@ export default function NavBar() {
             </Link>
 
             <div className="hidden space-x-4 ml-10 sm:flex">
-                <NavLink href={route('/')} active={route().current('/')}>
+                <NavLink href={route('/')} active={currentRoute === '/'}>
                     Home
                 </NavLink>
-                <NavLink href={route('about')}>
+                <NavLink href={route('about')} active={currentRoute === 'about'}>
                     About
                 </NavLink>
-                <NavLink href={route('reports')}>
+                <NavLink href={route('reports')} active={currentRoute === 'reports'}>
                     Reports
                 </NavLink>
-                <NavLink href={route('news')}>
+                <NavLink href={route('news')} active={currentRoute === 'news'}>
                     News
                 </NavLink>
-                <NavLink href={route('contact-us')}>
+                <NavLink href={route('contact-us')} active={currentRoute === 'contact-us'}>
                     Contact Us
                 </NavLink>
             </div>
