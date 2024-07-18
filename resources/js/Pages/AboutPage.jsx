@@ -59,9 +59,7 @@ export default function AboutPage() {
                             </div>
 
                             <div className="mt-3 space-y-1">
-                                <ResponsiveNavLink href={route('about')} active={route().current('about')}>
-                                    About
-                                </ResponsiveNavLink>
+                                <ResponsiveNavLink href={route('about')} active={route().current('about')}>About</ResponsiveNavLink>
                                 <ResponsiveNavLink href={route('reports')}>Reports</ResponsiveNavLink>
                                 <ResponsiveNavLink href={route('news')}>News</ResponsiveNavLink>
                                 <ResponsiveNavLink href={route('contact-us')}>Contact Us</ResponsiveNavLink>
@@ -74,7 +72,7 @@ export default function AboutPage() {
                 <main className='bg-white mx-auto py-6 px-4 sm:px-6 lg:px-8 mt-6 mb-6'>
 
                     <section>
-                        <div className='max-w-6xl mx-auto shadow-lg p-6 rounded'>
+                        <div className='max-w-7xl mx-auto shadow-lg p-6 rounded'>
                             <h2 className='text-2xl font-bold mb-4 bg-sky-900 text-white p-5 rounded'>ABOUT THE REPORT CARD</h2>
                             <p className='p-3'>
                                 The Report Card presents the rankings of the Philippines in major international competitiveness reports. The key objective of this collaboration is the development of a comprehensive “competitiveness dashboard”.

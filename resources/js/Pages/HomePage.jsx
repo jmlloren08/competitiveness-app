@@ -73,8 +73,8 @@ export default function HomePage() {
 
                 <Header />
 
-                <div className='max-w-5xl bg-white shadow-sm mx-auto py-6 px-4 sm:px-6 lg:px-8 -mt-5 sm:-mt-24 relative z-0 rounded-none sm:rounded-full' style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1)' }}>
-                    <div className='max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between relative'>
+                <div className='max-w-6xl bg-white shadow-sm mx-auto py-6 px-4 sm:px-6 lg:px-8 -mt-5 sm:-mt-24 relative z-0 rounded-none sm:rounded-full' style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                    <div className='max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between relative'>
                         <div className='items-center mb-4 sm:mb-0 sm:flex hidden'>
                             <span className='text-lg font-semi-bold mr-4'>Organized by:</span>
                             <img src="/backend/assets/images/logo-arta.png" alt="ARTA Logo" className='h-16' />
