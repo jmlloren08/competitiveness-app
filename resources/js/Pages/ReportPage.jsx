@@ -73,7 +73,7 @@ export default function ReportPage() {
             subMenu: [
                 {
                     name: 'Energy Transition Index (ETI)',
-                    icon: '/backend/assets/images/icon-eti.png'
+                    icon: '/backend/assets/images/icon-eti2.png'
                 },
                 {
                     name: 'Environmental Performance Index',
