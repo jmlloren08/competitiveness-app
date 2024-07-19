@@ -211,15 +211,15 @@ export default function ReportPage() {
                     </div>
                 </header>
 
-                <main className='bg-white mx-32 py-6 px-4 sm:px-6 lg:px-8 mt-6 mb-12'>
+                <main className='bg-white mx-4 sm:mx-6 lg:mx-32 py-6 px-4 sm:px-6 lg:px-8 mt-6 mb-12'>
 
                     <section className='text-center'>
                         {!selectedMenu ? (
-                            <div className='grid grid-rows-7 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 sm:gap-0 md:gap-0 lg:gap-0'>
+                            <div className='grid grid-rows-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 sm:gap-4 md:gap-4 lg:gap-0'>
                                 {menuItems.map((item, index) => (
-                                    <div key={index} className="relative">
+                                    <div key={index} className="relative w-full sm:w-auto">
                                         <button
-                                            className='bg-gradient-to-r from-blue-900 to-blue-950 text-white font-bold py-4 px-6 rounded-lg transition-transform transform hover:scale-105 w-10/12 sm:w-11/12 h-64 sm:h-72'
+                                            className='bg-gradient-to-r from-blue-900 to-blue-950 text-white font-bold py-4 px-6 rounded-lg transition-transform transform hover:scale-105 w-full h-full sm:w-10/12 sm:h-72'
                                             onClick={() => handleMenuClick(item.name)}
                                         >
                                             <div>
