@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhilippinesReportsRankingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,8 @@ Route::get('/', function () {
     //     'phpVersion' => PHP_VERSION,
     // ]);
 })->name('/');
+
+Route::get('/phils-reports-ranking', [PhilippinesReportsRankingController::class, 'getPhilippinesReportsRanking']);
 
 Route::get('/about', function () {
     return Inertia::render('AboutPage');

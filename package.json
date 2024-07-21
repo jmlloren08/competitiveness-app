@@ -25,7 +25,11 @@
         "@fortawesome/free-regular-svg-icons": "^6.6.0",
         "@fortawesome/free-solid-svg-icons": "^6.6.0",
         "@fortawesome/react-fontawesome": "^0.2.2",
-        "gulp": "^5.0.0"
+        "apexcharts": "^3.50.0",
+        "chart.js": "^4.4.3",
+        "gulp": "^5.0.0",
+        "react-apexcharts": "^1.4.1",
+        "react-chartjs-2": "^5.2.0"
     },
     "name": "competitiveness-app",
     "version": "1.0.0",

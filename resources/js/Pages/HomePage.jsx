@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import Header from '@/Components/Header';
 import NavBar from '@/Components/NavBar';
 import Footer from '@/Components/Footer';
 import { Head } from '@inertiajs/react';
 import PartnerLogos from '@/Components/PartnerLogos';
+import PhilippinesReportsRanking from '@/Components/PhilippinesReportsRanking';
 
 export default function HomePage() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-
+        
     return (
         <>
             <Head title="Competitiveness Dashboard" />
@@ -100,18 +101,11 @@ export default function HomePage() {
                         </div>
                     </section>
 
-                    <section className='mt-6'>
-                        <div className='max-w-6xl mx-auto shadow-lg p-6 rounded'>
-                            <h2 className='text-2xl text-white text-center font-bold mb-4 bg-sky-900 p-5 rounded'>PHILIPPINES REPORTS RANKING</h2>
-                            <p className='p-3'>
-                                Legend here...
-                            </p>
-                            <p className='p-3'>
-                                data here...
-                            </p>
-                        </div>
-                    </section>
-                    
+                    <div className='max-w-6xl mx-auto shadow-lg p-6 rounded'>
+                        <h2 className='text-white text-2xl text-center font-bold mb-4 bg-sky-900 p-5 rounded'>PHILIPPINES REPORTS RANKING</h2>
+                        <PhilippinesReportsRanking />
+
+                    </div>
 
                 </main>
 
