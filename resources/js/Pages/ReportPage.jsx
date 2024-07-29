@@ -14,7 +14,8 @@ export default function ReportPage() {
             subMenu: [
                 {
                     name: 'World Competitiveness Yearbook',
-                    icon: '/backend/assets/images/icon-wcy.png'
+                    icon: '/backend/assets/images/icon-wcy.png',
+                    route: 'reports.general.wcy'
                 }
             ]
         },
@@ -23,27 +24,33 @@ export default function ReportPage() {
             subMenu: [
                 {
                     name: 'Digital Quality of Life Index',
-                    icon: '/backend/assets/images/icon-dqli.png'
+                    icon: '/backend/assets/images/icon-dqli.png',
+                    route: 'reports.digital.dqli'
                 },
                 {
                     name: 'GovTech Maturity Index',
-                    icon: '/backend/assets/images/icon-gtmi.png'
+                    icon: '/backend/assets/images/icon-gtmi.png',
+                    route: 'reports.digital.gmi'
                 },
                 {
                     name: 'ICT Development Index',
-                    icon: '/backend/assets/images/icon-ictdi.png'
+                    icon: '/backend/assets/images/icon-ictdi.png',
+                    route: 'reports.digital.ictdi'
                 },
                 {
                     name: 'E-Government Development Index',
-                    icon: '/backend/assets/images/icon-egdi.png'
+                    icon: '/backend/assets/images/icon-egdi.png',
+                    route: 'reports.digital.egdi'
                 },
                 {
                     name: 'Network Readiness Index',
-                    icon: '/backend/assets/images/icon-nri.png'
+                    icon: '/backend/assets/images/icon-nri.png',
+                    route: 'reports.digital.nri'
                 },
                 {
                     name: 'World Digital Competitiveness Ranking',
-                    icon: '/backend/assets/images/icon-wdcr.png'
+                    icon: '/backend/assets/images/icon-wdcr.png',
+                    route: 'reports.digital.wdcr'
                 }
             ]
         },
@@ -52,19 +59,23 @@ export default function ReportPage() {
             subMenu: [
                 {
                     name: 'Programme for International Student Assessment (PISA)',
-                    icon: '/backend/assets/images/icon-pisa.png'
+                    icon: '/backend/assets/images/icon-pisa.png',
+                    route: 'reports.educationtalent&innovation.pisa'
                 },
                 {
                     name: 'Global Innovation Index',
-                    icon: '/backend/assets/images/icon-gii.png'
+                    icon: '/backend/assets/images/icon-gii.png',
+                    route: 'reports.educationtalent&innovation.gii'
                 },
                 {
                     name: 'Global Talent Competitiveness Index',
-                    icon: '/backend/assets/images/icon-gtci.png'
+                    icon: '/backend/assets/images/icon-gtci.png',
+                    route: 'reports.educationtalent&innovation.gtci'
                 },
                 {
                     name: 'World Talent Ranking',
-                    icon: '/backend/assets/images/icon-wtr.png'
+                    icon: '/backend/assets/images/icon-wtr.png',
+                    route: 'reports.educationtalent&innovation.wtr'
                 }
             ]
         },
@@ -73,11 +84,13 @@ export default function ReportPage() {
             subMenu: [
                 {
                     name: 'Energy Transition Index (ETI)',
-                    icon: '/backend/assets/images/icon-eti2.png'
+                    icon: '/backend/assets/images/icon-eti2.png',
+                    route: 'reports.energy&environment.eti'
                 },
                 {
                     name: 'Environmental Performance Index',
-                    icon: '/backend/assets/images/icon-epi.png'
+                    icon: '/backend/assets/images/icon-epi.png',
+                    route: 'reports.energy&environment.epi'
                 }
             ]
         },
@@ -86,19 +99,23 @@ export default function ReportPage() {
             subMenu: [
                 {
                     name: 'B-Ready/Doing Business Report',
-                    icon: '/backend/assets/images/icon-brdbr.png'
+                    icon: '/backend/assets/images/icon-brdbr.png',
+                    route: 'reports.governance.brdbr'
                 },
                 {
                     name: 'Corruption Perceptions Index',
-                    icon: '/backend/assets/images/icon-cpi.png'
+                    icon: '/backend/assets/images/icon-cpi.png',
+                    route: 'reports.governance.cpi'
                 },
                 {
                     name: 'Economic Freedom Index',
-                    icon: '/backend/assets/images/icon-efi.png'
+                    icon: '/backend/assets/images/icon-efi.png',
+                    route: 'reports.governance.efi'
                 },
                 {
                     name: 'Worldwide Governance Indicators',
-                    icon: '/backend/assets/images/icon-wgi.png'
+                    icon: '/backend/assets/images/icon-wgi.png',
+                    route: 'reports.governance.wgi'
                 }
             ]
         },
@@ -107,11 +124,13 @@ export default function ReportPage() {
             subMenu: [
                 {
                     name: 'Global Health Security Index',
-                    icon: '/backend/assets/images/icon-ghsi.png'
+                    icon: '/backend/assets/images/icon-ghsi.png',
+                    route: 'reports.health&nutrition.ghsi'
                 },
                 {
                     name: 'Global Hunger Index',
-                    icon: '/backend/assets/images/icon-ghi.png'
+                    icon: '/backend/assets/images/icon-ghi.png',
+                    route: 'reports.health&nutrition.ghi'
                 }
             ]
         },
@@ -120,7 +139,8 @@ export default function ReportPage() {
             subMenu: [
                 {
                     name: 'Logistics Performance Index',
-                    icon: '/backend/assets/images/icon-lpi.png'
+                    icon: '/backend/assets/images/icon-lpi.png',
+                    route: 'reports.trade.lpi'
                 }
             ]
         }
@@ -257,7 +277,7 @@ export default function ReportPage() {
                                                     style={{ filter: 'invert(100%)' }}
                                                 />
                                             </div>
-                                            <div className="no-underline hover:underline text-lg mx-3 flex items-center"><Link>{subItem.name}</Link></div>
+                                            <div className="no-underline hover:underline text-lg mx-3 flex items-center"><Link href={route(`${subItem.route}`)}>{subItem.name}</Link></div>
                                         </div>
                                     ))}
                                 </div>

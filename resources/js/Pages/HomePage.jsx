@@ -102,7 +102,8 @@ export default function HomePage() {
                     </section>
 
                     <div className='max-w-6xl mx-auto shadow-lg p-6 rounded'>
-                        <h2 className='text-white text-2xl text-center font-bold mb-4 bg-sky-900 p-5 rounded'>PHILIPPINES REPORTS RANKING</h2>
+                        <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>PHILIPPINES REPORTS RANKING</h2>
+                        <h2 className='text-white text-center font-bold bg-blue-900 p-3 mb-6'>CHART</h2>
                         <PhilippinesReportsRanking />
 
                     </div>
