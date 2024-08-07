@@ -56,8 +56,8 @@ export default function Footer() {
                     <h1 className="text-lg font-bold mb-2">ABOUT GOVPH</h1>
                     <p>Learn more about the Philippine government, its structure, how government works and the people behind it.</p>
                     <p className='m-1 p-1'></p>
-                    <p>GOV.PH</p>
-                    <p className='border-transparent text-gray-500 hover:text-red-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300'><a href="https://gov.ph/data">Open Data Portal</a></p>
+                    <p className='border-transparent text-gray-500 hover:text-red-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300'><a href="https://www.gov.ph/">GOV.PH</a></p>
+                    <p className='border-transparent text-gray-500 hover:text-red-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300'><a href="https://data.gov.ph/index/home">Open Data Portal</a></p>
                     <p className='border-transparent text-gray-500 hover:text-red-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300'><a href="https://officialgazette.gov.ph">Official Gazette</a></p>
                 </div>
                 <div>

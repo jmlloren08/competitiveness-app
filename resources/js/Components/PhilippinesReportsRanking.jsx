@@ -147,7 +147,7 @@ export default function PhilippinesReportsRanking() {
                     </thead>
                     <tbody className='block md:table-row-group'>
                         {chartData.map((item, index) => (
-                            <tr key={index} className='bg-white border border-gray-300 md:border-none block md:table-row'>
+                            <tr key={index} className='bg-white border border-gray-300 md:border-none block md:table-row even:bg-gray-50 hover:bg-gray-100'>
                                 <td className={`p-2 md:border md:border-gray-300 block md:table-cell ${item.gauge === 'Top Third' ? 'bg-green-500' : item.gauge === 'Middle Third' ? 'bg-yellow-500' : item.gauge === 'Bottom Third' ? 'bg-red-500' : 'bg-gray-500'}`}>
                                     <span className='inline-block md:hidden font-bold m-0'>Gauge:</span> {item.gauge}</td>
                                 <td className='p-2 md:border md:border-gray-300 block md:table-cell'>

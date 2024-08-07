@@ -1,14 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import NavBar from '@/Components/NavBar';
 import Footer from '@/Components/Footer';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import Gauge from '@/Components/Gauge';
+import WorldCompetitivenessRanking from '@/Components/WorldCompetitivenessRanking';
+import axios from 'axios';
+import IndicatorRankingWCR from '@/Components/IndicatorRankingWCR';
 
 export default function WorldCompetitivenessYearBook() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+    const [data, setData] = useState({
+        gauge: [],
+        overall: [],
+        vsAseanEconomies: []
+    });
 
-    const gaugeValue = 'Middle Third';
+    useEffect(() => {
+        axios.get('/get-ph-ranks')
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data: ', error);
+            });
+    }, []);
+
+    const gaugeLevel = data.gauge.length ? data.gauge[0].area_block : 'Bottom Third';
+    const overallRank = data.overall.length ? data.overall[0].rank : 'NDA';
+    const baselineEconomies = data.overall.length ? data.overall[0].baseline_economies : 'NDA';
+    const aseanRank = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].rank_in_asean : 'NDA';
+    const remarks = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].remarks : 'NDA';
 
     return (
         <>
@@ -96,33 +118,109 @@ export default function WorldCompetitivenessYearBook() {
                                 <div className="flex flex-col w-full">
                                     <div className="bg-sky-900 rounded-lg drop-shadow">
                                         <p className="text-white m-3">OVERALL</p>
-                                        <h1 className='text-white text-center text-7xl font-bold'>52</h1>
-                                        <p className="text-white text-center m-3">OVER 64 ECONOMIES</p>
+                                        <h1 className='text-white text-center text-7xl font-bold'>{overallRank}</h1>
+                                        <p className="text-white text-center m-3">OVER {baselineEconomies} ECONOMIES</p>
                                     </div>
                                     <div className="bg-sky-700 rounded-lg mt-3 drop-shadow">
                                         <p className="text-white m-3">VS ASEAN ECONOMIES</p>
-                                        <h1 className='text-white text-center text-7xl font-bold'>5</h1>
-                                        <p className="text-white text-center m-3">OVER 5 ASEAN ECONOMIES</p>
+                                        <h1 className='text-white text-center text-7xl font-bold'>{aseanRank}</h1>
+                                        <p className="text-white text-center m-3">{remarks}</p>
                                     </div>
                                 </div>
                                 {/* gauge meter */}
                                 <div>
-                                    <Gauge gauge={gaugeValue} />
+                                    <Gauge gauge={gaugeLevel} />
                                 </div>
+                            </div>
+
+                            <div className='mt-12 mb-12'>
+                                <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>ABOUT THE REPORT</h2>
+                                <p className='p-3'>The IMD World Competitiveness Yearbook (WCY), first published in 1989, is a comprehensive annual report and worldwide reference point on the competitiveness of countries. It provides benchmarking and trends, as well as statistics and survey data based on extensive research. It analyzes and ranks countries according to how they manage their competencies to achieve long-term value creation.</p>
+
+                                <p className='p-3'>An economy’s competitiveness cannot be reduced only to GDP and productivity because enterprises also have to cope with political, social and cultural dimensions. Governments therefore need to provide an environment characterized by efficient infrastructures, institutions, and policies that encourage sustainable value creation by enterprises.</p>
+
+                                <p className='p-3'>The IMD World Competitiveness Ranking emphasizes a long-term trend highlighted in past editions – that the countries on the top of the list each have a unique approach to becoming competitive.</p>
+                            </div>
+
+                            <div>
+                                <h2 className='text-white text-center text-xl font-bold bg-blue-950 p-3'>VIEW THE RANKINGS</h2>
+                            </div>
+
+                            <WorldCompetitivenessRanking />
+
+                            <div className='mt-12'>
+                                <h2 className='text-white text-center text-xl font-bold bg-blue-950 p-3'>INDICATOR RANKINGS</h2>
+                            </div>
+                            
+                            <IndicatorRankingWCR />
+
+                            <div className='mt-12 mb-12'>
+                                <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>REPORT HIGHLIGHTS</h2>
+                                <p className='p-3'>The top three economies in the 2023 World Competitiveness Yearbook are Denmark (1st), Ireland (2nd), and Switzerland (3rd). In comparison, the Philippines ranks 52nd out of 64 economies in the 2023 WCY. The biggest gainers in 2023 include Indonesia (34th) and Ireland (2nd), which went up by 10 and 9 places, respectively. On the other hand, the biggest losers include Latvia (51st) and Hungary (46th), which went down by 16 and seven places, respectively.</p>
+                            </div>
+
+                            <div className='mt-12 mb-12'>
+                                <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>NEWS ARTICLES</h2>
+                                <p className='p-2 font-bold text-lg underline'>
+                                    <a href="https://www.gmanetwork.com/news/money/economy/873439/philippines-falls-to-52nd-spot-in-world-competitiveness-ranking/story/" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                        Philippines falls to 52nd spot in world competitiveness ranking
+                                    </a>
+                                </p>
+                                <p className='p-2 font-bold text-lg underline'>
+                                    <a href="https://www.philstar.com/headlines/2023/06/20/2275086/global-competitiveness-philippine-drops-4-spots-52nd" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                        Global competitiveness: Philippine drops 4 spots to 52nd
+                                    </a>
+                                </p>
+                                <p className='p-2 font-bold text-lg underline'>
+                                    <a href="https://newsinfo.inquirer.net/1790431/ph-falls-by-four-spots-in-global-competitiveness-ranking" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                        PH falls by four spots in global competitiveness ranking
+                                    </a>
+                                </p>
+                                <p className='p-2 font-bold text-lg underline'>
+                                    <a href="https://www.bworldonline.com/top-stories/2023/06/20/529563/phl-competitiveness-ranking-dips-report/#google_vignette" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                        PHL competitiveness ranking dips — report
+                                    </a>
+                                </p>
+                            </div>
+
+                            <div className='mt-12 mb-12'>
+                                <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>DOWNLOAD THE WORLD COMPETITIVENESS YEARBOOK</h2>
+                                <p className='p-2 font-bold text-lg underline'>
+                                    <a href="https://imd.cld.bz/IMD-World-Competitiveness-Booklet-2023" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                        2023 World Competitiveness Yearbook
+                                    </a>
+                                </p>
+                                <p className='p-2 font-bold text-lg underline'>
+                                    <a href="https://imd.cld.bz/IMD-World-Competitiveness-Booklet-2022" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                        2022 World Competitiveness Yearbook
+                                    </a>
+                                </p>
+                                <p className='p-2 font-bold text-lg underline'>
+                                    <a href="https://imd.cld.bz/IMD-World-Competitiveness-Booklet-2021" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                        2021 World Competitiveness Yearbook
+                                    </a>
+                                </p>
+                                <p className='p-2 font-bold text-lg underline'>
+                                    <a href="https://imd.cld.bz/IMD-World-Competitiveness-Yearbook-2020" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                        2020 World Competitiveness Yearbook
+                                    </a>
+                                </p>
+                                <p className='p-2 font-bold text-lg'>
+                                    2019 Not available at IMD’s website. AIM RSN PCC has copy of hard copy.
+                                </p>
                             </div>
 
                         </div>
 
-                        <div className='max-w-6xl mx-auto shadow-lg mb-12 p-5 rounded'>
-                            <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>ABOUT THE REPORT</h2>
-                            <p className='p-3'>The IMD World Competitiveness Yearbook (WCY), first published in 1989, is a comprehensive annual report and worldwide reference point on the competitiveness of countries. It provides benchmarking and trends, as well as statistics and survey data based on extensive research. It analyzes and ranks countries according to how they manage their competencies to achieve long-term value creation.</p>
-
-                            <p className='p-3'>An economy’s competitiveness cannot be reduced only to GDP and productivity because enterprises also have to cope with political, social and cultural dimensions. Governments therefore need to provide an environment characterized by efficient infrastructures, institutions, and policies that encourage sustainable value creation by enterprises.</p>
-
-                            <p className='p-3'>The IMD World Competitiveness Ranking emphasizes a long-term trend highlighted in past editions – that the countries on the top of the list each have a unique approach to becoming competitive.</p>
-                        </div>
-
                     </section>
+
+                    <div className='flex justify-center m-12'>
+                        <button
+                            className='mt-4 bg-gray-800 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 text-white font-bold py-2 px-4 rounded-lg'
+                        >
+                            <Link href={route('reports')}>Back to Main Menu</Link>
+                        </button>
+                    </div>
 
                 </main>
 

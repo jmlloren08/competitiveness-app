@@ -42,7 +42,7 @@ const Gauge = ({ gauge }) => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className='w-full'>
-            <svg width={600} height='auto' viewBox='0 0 600 300'>
+            <svg width={600} viewBox='0 0 600 300'>
                 {/* gauge arcs */}
                 <path d={getArcPath(180, -45)} fill='none' stroke={gaugeColors['Bottom Third']} strokeWidth={75} />
                 <path d={getArcPath(-45, 45)} fill='none' stroke={gaugeColors['Middle Third']} strokeWidth={75} />

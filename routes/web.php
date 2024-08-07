@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\DigitalQualityOfLifeIndexController;
+use App\Http\Controllers\IndicatorRankingDQLIController;
+use App\Http\Controllers\IndicatorRankingWCRController;
 use App\Http\Controllers\PhilippinesReportsRankingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WorldCompetitivenessRankingController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -114,8 +118,17 @@ Route::get('/reports/trade/logistics-performance-index', function () {
     return Inertia::render('Reports/Trade/LogisticsPerformanceIndex');
 })->name('reports.trade.lpi');
 
-// fetch data for chart and table in homepage
+// fetch data for chart and table to homepage
 Route::get('/phils-reports-ranking', [PhilippinesReportsRankingController::class, 'getPhilippinesReportsRanking']);
+// fetch data for chart and table
+Route::get('/world-competitiveness-ranking', [WorldCompetitivenessRankingController::class, 'getWorldCompetitivenessRanking']);
+Route::get('/digital-quality-of-life-index', [DigitalQualityOfLifeIndexController::class, 'getDigitalQualityOfLifeIndex']);
+// fetch data for gauge/overall/vsaseaneconomies
+Route::get('/get-ph-ranks', [WorldCompetitivenessRankingController::class, 'getPhRanks']);
+Route::get('/get-ph-ranks-dqli', [DigitalQualityOfLifeIndexController::class, 'getPhRanksDQLI']);
+// fetch data indicator ranking
+Route::get('/get-indicator-ranking-wcr', [IndicatorRankingWCRController::class, 'getIndicatorRankingWCR']);
+Route::get('/get-indicator-ranking-dqli', [IndicatorRankingDQLIController::class, 'getIndicatorRankingDQLI']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
