@@ -2,37 +2,36 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 import axios from 'axios';
 
-export default function WorldCompetitivenessRanking() {
-    const [chartDataWCR, setchartDataWCR] = useState([]);
+export default function DigitalICTDI() {
+    const [chartdataICTDI, setChartDataICTDI] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-
-    const [loadingWCR, setloadingWCR] = useState(true);
+    const [loadingICTDI, setLoadingICTDI] = useState(true);
 
     useEffect(() => {
-        axios.get('/world-competitiveness-ranking')
+        axios.get('/ict-development-index')
             .then(response => {
                 const { years, countries, data } = response.data;
-                setYears(years.map(item => item.wcy_year));
-                setCountries(countries.map(item => item.wcy_country));
-                setchartDataWCR(data);
-                setloadingWCR(false);
+                setYears(years.map(item => item.ictdi_year));
+                setCountries(countries.map(item => item.ictdi_country));
+                setChartDataICTDI(data);
+                setLoadingICTDI(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setloadingWCR(false);
+                setLoadingICTDI(false);
             });
-    }, [])
+    }, []);
 
-    if (loadingWCR) {
+    if (loadingICTDI) {
         return <div>Please wait...</div>
     }
 
     const series = countries.map(country => ({
         name: country,
-        data: chartDataWCR.filter(item => item.wcy_country === country).map(item => ({
-            x: item.wcy_year,
-            y: item.wcy_count
+        data: chartdataICTDI.filter(item => item.ictdi_country === country).map(item => ({
+            x: item.ictdi_year,
+            y: item.ictdi_count
         }))
     }));
 
@@ -54,7 +53,7 @@ export default function WorldCompetitivenessRanking() {
         tooltip: {
             y: {
                 formatter: function (val) {
-                    if (val === null || val === undefined || isNaN(val)) {
+                    if (val === null | val === undefined | isNaN(val)) {
                         return 'NDA';
                     }
                     return val;
@@ -67,7 +66,7 @@ export default function WorldCompetitivenessRanking() {
         }
     }
 
-    const wcy_economies = ['63 economies', '63 economies', '64 economies', '63 economies', '64 economies'];
+    const ictdi_economies = ['2023', 'NDA', 'NDA', 'NDA', 'NDA'];
 
     return (
         <div>
@@ -82,7 +81,7 @@ export default function WorldCompetitivenessRanking() {
 
             <div className='overflow-x-auto mt-6'>
                 <h2 className='text-white text-center font-bold bg-blue-900 p-3'>TABLE</h2>
-                <div className="block md:hidden">
+                <div className='block md:hidden'>
                     {/* mobile view */}
                     {countries.map(country => (
                         <div key={country} className={`border border-gray-100 rounded-lg mb-4 p-4 ${country === 'Philippines' ? 'bg-blue-300' : 'bg-white'}`}>
@@ -91,14 +90,15 @@ export default function WorldCompetitivenessRanking() {
                                 <div key={year} className='mb-2'>
                                     <span className='font-semibold'>{`${year}: `}</span>
                                     <span>
-                                        {chartDataWCR.find(item => item.wcy_country === country && item.wcy_year === year)?.wcy_count || 'NDA'}
+                                        {chartdataICTDI.find(item => item.ictdi_country === country && item.ictdi_year === year)?.ictdi_count || 'NDA'}
                                     </span>
                                 </div>
                             ))}
                         </div>
                     ))}
                 </div>
-                <div className="hidden md:block">
+
+                <div className='hidden md:block'>
                     {/* desktop view */}
                     <table className='min-w-full border-collapse'>
                         <thead className='bg-blue-900 text-white'>
@@ -110,7 +110,7 @@ export default function WorldCompetitivenessRanking() {
                             </tr>
                             <tr>
                                 <th className='p-2 border md:border-gray-100'>Baseline No.</th>
-                                {wcy_economies.map((economy, index) => (
+                                {ictdi_economies.map((economy, index) => (
                                     <th className='p-2 border md:border-gray-100' key={index}>{economy}</th>
                                 ))}
                             </tr>
@@ -121,7 +121,7 @@ export default function WorldCompetitivenessRanking() {
                                     <td className='p-2 text-center'>{country}</td>
                                     {years.map(year => (
                                         <td key={year} className='p-2 text-left sm:text-center'>
-                                            {chartDataWCR.find(item => item.wcy_country === country && item.wcy_year === year)?.wcy_count || 'NDA'}
+                                            {chartdataICTDI.find(item => item.ictdi_country === country && item.ictdi_year === year)?.ictdi_count || 'NDA'}
                                         </td>
                                     ))}
                                 </tr>

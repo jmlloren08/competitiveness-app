@@ -27,15 +27,17 @@ class WorldCompetitivenessRankingController extends Controller
         }
     }
 
-    public function getPhRanks()
+    public function getPhRanksWCR()
     {
         try {
-            $gaugeData = GcrGeneralWcyPhRanks::select('area_block')->distinct()->get();
-            $overall = GcrGeneralWcyPhRanks::select('rank', 'baseline_economies')->where('year', 2023)->get();
+            $gaugeData = GcrGeneralWcyPhRanks::select('area_block')->distinct()->first();
+            $latestYear = GcrGeneralWcyPhRanks::max('year');
+            $overall = GcrGeneralWcyPhRanks::select('source', 'rank', 'baseline_economies')->where('year', $latestYear)->get();
             $vsAseanEconomies = GcrGeneralWcyPhRanks::select('rank_in_asean', 'remarks')->distinct()->get();
 
             return response()->json([
                 'gauge' => $gaugeData,
+                'latestYear' => $latestYear,
                 'overall' => $overall,
                 'vsAseanEconomies' => $vsAseanEconomies
             ]);

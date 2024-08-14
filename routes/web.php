@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\DigitalQualityOfLifeIndexController;
+use App\Http\Controllers\GovTechMaturityIndexController;
+use App\Http\Controllers\ICTDevelopmentIndexController;
 use App\Http\Controllers\IndicatorRankingDQLIController;
+use App\Http\Controllers\IndicatorRankingICTDIController;
 use App\Http\Controllers\IndicatorRankingWCRController;
 use App\Http\Controllers\PhilippinesReportsRankingController;
 use App\Http\Controllers\ProfileController;
@@ -123,12 +126,16 @@ Route::get('/phils-reports-ranking', [PhilippinesReportsRankingController::class
 // fetch data for chart and table
 Route::get('/world-competitiveness-ranking', [WorldCompetitivenessRankingController::class, 'getWorldCompetitivenessRanking']);
 Route::get('/digital-quality-of-life-index', [DigitalQualityOfLifeIndexController::class, 'getDigitalQualityOfLifeIndex']);
+Route::get('/ict-development-index', [ICTDevelopmentIndexController::class, 'getICTDevelopmentIndex']);
 // fetch data for gauge/overall/vsaseaneconomies
-Route::get('/get-ph-ranks', [WorldCompetitivenessRankingController::class, 'getPhRanks']);
+Route::get('/get-ph-ranks-wcr', [WorldCompetitivenessRankingController::class, 'getPhRanksWCR']);
 Route::get('/get-ph-ranks-dqli', [DigitalQualityOfLifeIndexController::class, 'getPhRanksDQLI']);
+Route::get('/get-ph-ranks-gtmi', [GovTechMaturityIndexController::class, 'getPhRanksGTMI']);
+Route::get('/get-ph-ranks-ictdi', [ICTDevelopmentIndexController::class, 'getPhRanksICTDI']);
 // fetch data indicator ranking
 Route::get('/get-indicator-ranking-wcr', [IndicatorRankingWCRController::class, 'getIndicatorRankingWCR']);
 Route::get('/get-indicator-ranking-dqli', [IndicatorRankingDQLIController::class, 'getIndicatorRankingDQLI']);
+Route::get('/get-indicator-ranking-ictdi', [IndicatorRankingICTDIController::class, 'getIndicatorRankingICTDI']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

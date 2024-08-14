@@ -3,11 +3,10 @@ import Chart from 'react-apexcharts';
 import axios from 'axios';
 
 export default function DigitalDQOLI() {
-    const [chartDataWCR, setchartDataWCR] = useState([]);
+    const [chartDataDQLI, setChartDataDQLI] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-
-    const [loadingWCR, setloadingWCR] = useState(true);
+    const [loadingDQLI, setloadingDQLI] = useState(true);
 
     useEffect(() => {
         axios.get('/digital-quality-of-life-index')
@@ -15,22 +14,22 @@ export default function DigitalDQOLI() {
                 const { years, countries, data } = response.data;
                 setYears(years.map(item => item.dqli_year));
                 setCountries(countries.map(item => item.dqli_country));
-                setchartDataWCR(data);
-                setloadingWCR(false);
+                setChartDataDQLI(data);
+                setloadingDQLI(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setloadingWCR(false);
+                setloadingDQLI(false);
             });
     }, [])
 
-    if (loadingWCR) {
-        return <div>loadingDigitalDQOLI...</div>
+    if (loadingDQLI) {
+        return <div>Please wait...</div>
     }
 
     const series = countries.map(country => ({
         name: country,
-        data: chartDataWCR.filter(item => item.dqli_country === country).map(item => ({
+        data: chartDataDQLI.filter(item => item.dqli_country === country).map(item => ({
             x: item.dqli_year,
             y: item.dqli_count
         }))
@@ -91,13 +90,14 @@ export default function DigitalDQOLI() {
                                 <div key={year} className='mb-2'>
                                     <span className='font-semibold'>{`${year}: `}</span>
                                     <span>
-                                        {chartDataWCR.find(item => item.dqli_country === country && item.dqli_year === year)?.dqli_count || 'NDA'}
+                                        {chartDataDQLI.find(item => item.dqli_country === country && item.dqli_year === year)?.dqli_count || 'NDA'}
                                     </span>
                                 </div>
                             ))}
                         </div>
                     ))}
                 </div>
+                
                 <div className="hidden md:block">
                     {/* desktop view */}
                     <table className='min-w-full border-collapse'>
@@ -121,7 +121,7 @@ export default function DigitalDQOLI() {
                                     <td className='p-2 text-center'>{country}</td>
                                     {years.map(year => (
                                         <td key={year} className='p-2 text-left sm:text-center'>
-                                            {chartDataWCR.find(item => item.dqli_country === country && item.dqli_year === year)?.dqli_count || 'NDA'}
+                                            {chartDataDQLI.find(item => item.dqli_country === country && item.dqli_year === year)?.dqli_count || 'NDA'}
                                         </td>
                                     ))}
                                 </tr>

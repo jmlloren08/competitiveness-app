@@ -13,12 +13,12 @@ class DigitalQualityOfLifeIndexController extends Controller
         try {
             $years = GcrDigitalDqliPhVsAseans::select('dqli_year')->distinct()->orderBy('dqli_year', 'desc')->get();
             $countries = GcrDigitalDqliPhVsAseans::select('dqli_country')->distinct()->get();
-            $wcrData = GcrDigitalDqliPhVsAseans::select('dqli_country', 'dqli_count', 'dqli_year', 'dqli_economy')->get();
+            $dqliData = GcrDigitalDqliPhVsAseans::select('dqli_country', 'dqli_count', 'dqli_year', 'dqli_economy')->get();
 
             return response()->json([
                 'years' => $years,
                 'countries' => $countries,
-                'data' => $wcrData
+                'data' => $dqliData
             ]);
         } catch (\Exception $e) {
 
@@ -30,12 +30,14 @@ class DigitalQualityOfLifeIndexController extends Controller
     public function getPhRanksDQLI()
     {
         try {
-            $gaugeData = GcrDigitalDqliPhRanks::select('area_block')->distinct()->get();
-            $overall = GcrDigitalDqliPhRanks::select('rank', 'baseline_economies')->where('year', 2023)->get();
+            $gaugeData = GcrDigitalDqliPhRanks::select('area_block')->distinct()->first();
+            $latestYear = GcrDigitalDqliPhRanks::max('year');
+            $overall = GcrDigitalDqliPhRanks::select('source', 'rank', 'baseline_economies')->where('year', $latestYear)->get();
             $vsAseanEconomies = GcrDigitalDqliPhRanks::select('rank_in_asean', 'remarks')->distinct()->get();
 
             return response()->json([
                 'gauge' => $gaugeData,
+                'latestYear' => $latestYear,
                 'overall' => $overall,
                 'vsAseanEconomies' => $vsAseanEconomies
             ]);

@@ -11,13 +11,14 @@ import IndicatorRankingWCR from '@/Components/IndicatorRankingWCR';
 export default function WorldCompetitivenessYearBook() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [data, setData] = useState({
-        gauge: [],
+        gauge: null,
+        latestYear: null,
         overall: [],
         vsAseanEconomies: []
     });
 
     useEffect(() => {
-        axios.get('/get-ph-ranks')
+        axios.get('/get-ph-ranks-wcr')
             .then(response => {
                 setData(response.data);
             })
@@ -26,15 +27,17 @@ export default function WorldCompetitivenessYearBook() {
             });
     }, []);
 
-    const gaugeLevel = data.gauge.length ? data.gauge[0].area_block : 'Bottom Third';
+    const gaugeLevel = data.gauge ? data.gauge.area_block : 'Bottom Third';
+    const latestYear = data.latestYear ? data.latestYear : 'NDA';
     const overallRank = data.overall.length ? data.overall[0].rank : 'NDA';
+    const source = data.overall.length ? data.overall[0].source : 'NDA';
     const baselineEconomies = data.overall.length ? data.overall[0].baseline_economies : 'NDA';
     const aseanRank = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].rank_in_asean : 'NDA';
     const remarks = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].remarks : 'NDA';
 
     return (
         <>
-            <Head title="Competitiveness Dashboard - Reports/General" />
+            <Head title="Competitiveness Dashboard - Reports/General/World Competitiveness Yearbook" />
 
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">
@@ -111,7 +114,7 @@ export default function WorldCompetitivenessYearBook() {
                     <section>
                         <div className='max-w-6xl mx-auto shadow-lg mb-12 p-5 rounded'>
                             <p className='text-blue-900 text-1xl'><span className='font-bold'>CATEGORY:</span> GENERAL</p>
-                            <p className='text-blue-900 text-1xl mb-3'><span className='font-bold'>PUBLISHER:</span> INTERNATIONAL INSTITUTE OF MANAGEMENT DEVELOPMENT (IMD), 2023</p>
+                            <p className='text-blue-900 text-1xl mb-3'><span className='font-bold'>PUBLISHER:</span> {source}, {latestYear}</p>
                             <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>PHILIPPINES RANKING</h2>
                             {/* overall vs asean economies */}
                             <div className="flex flex-col sm:flex-row mb-6">
@@ -151,7 +154,7 @@ export default function WorldCompetitivenessYearBook() {
                             <div className='mt-12'>
                                 <h2 className='text-white text-center text-xl font-bold bg-blue-950 p-3'>INDICATOR RANKINGS</h2>
                             </div>
-                            
+
                             <IndicatorRankingWCR />
 
                             <div className='mt-12 mb-12'>

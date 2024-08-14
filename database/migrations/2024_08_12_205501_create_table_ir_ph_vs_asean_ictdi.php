@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gcr_digital_dqli', function (Blueprint $table) {
+        Schema::create('gcr_general_ictdi_irph_vs_aseans', function (Blueprint $table) {
             $table->id();
-            $table->string('dqli_country');
-            $table->string('dqli_count');
-            $table->string('dqli_year');
-            $table->string('dqli_economy');
+            $table->string('indicator_ranking');
+            $table->string('years');
+            $table->integer('country_id');
+            $table->string('country');
+            $table->string('counts');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gcr_digital_dqli');
+        Schema::dropIfExists('gcr_general_ictdi_irph_vs_aseans');
     }
 };

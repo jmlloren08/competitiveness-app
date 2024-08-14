@@ -11,7 +11,8 @@ import DigitalDQOLI from '@/Components/DigitalDQOLI';
 export default function DigitalQualityOfLifeIndex() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [data, setData] = useState({
-        gauge: [],
+        gauge: null,
+        latestYear: null,
         overall: [],
         vsAseanEconomies: []
     });
@@ -26,15 +27,17 @@ export default function DigitalQualityOfLifeIndex() {
             });
     }, []);
 
-    const gaugeLevel = data.gauge.length ? data.gauge[0].area_block : 'Bottom Third';
+    const gaugeLevel = data.gauge ? data.gauge.area_block : 'Bottom Third';
+    const latestYear = data.latestYear ? data.latestYear : 'NDA';
     const overallRank = data.overall.length ? data.overall[0].rank : 'NDA';
+    const source = data.overall.length ? data.overall[0].source : 'NDA';
     const baselineEconomies = data.overall.length ? data.overall[0].baseline_economies : 'NDA';
     const aseanRank = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].rank_in_asean : 'NDA';
     const remarks = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].remarks : 'NDA';
 
     return (
         <>
-            <Head title="Competitiveness Dashboard - Reports/Digital" />
+            <Head title="Competitiveness Dashboard - Reports/Digital/Digital Quality of Life Index" />
 
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">
@@ -111,7 +114,7 @@ export default function DigitalQualityOfLifeIndex() {
                     <section>
                         <div className='max-w-6xl mx-auto shadow-lg mb-12 p-5 rounded'>
                             <p className='text-blue-900 text-1xl'><span className='font-bold'>CATEGORY:</span> DIGITAL</p>
-                            <p className='text-blue-900 text-1xl mb-3'><span className='font-bold'>PUBLISHER:</span> SURF SHARK, 2023</p>
+                            <p className='text-blue-900 text-1xl mb-3'><span className='font-bold'>PUBLISHER:</span> {source}, {latestYear}</p>
                             <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>PHILIPPINES RANKING</h2>
                             {/* overall vs asean economies */}
                             <div className="flex flex-col sm:flex-row mb-6">
@@ -154,12 +157,12 @@ export default function DigitalQualityOfLifeIndex() {
                                 <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>DOWNLOAD THE DIGITAL QUALITY OF LIFE INDEX</h2>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://surfshark.com/dql2023" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    2023 Digital Quality of Life Index
+                                        2023 Digital Quality of Life Index
                                     </a>
                                 </p>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://surfshark.com/dql" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    2019 Digital Quality of Life Index
+                                        2019 Digital Quality of Life Index
                                     </a>
                                 </p>
                             </div>
