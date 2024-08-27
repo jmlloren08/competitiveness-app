@@ -1,15 +1,16 @@
 <?php
 
 use App\Http\Controllers\DigitalQualityOfLifeIndexController;
+use App\Http\Controllers\EGovernmentDevelopmentIndexController;
 use App\Http\Controllers\GovTechMaturityIndexController;
 use App\Http\Controllers\ICTDevelopmentIndexController;
 use App\Http\Controllers\IndicatorRankingDQLIController;
+use App\Http\Controllers\IndicatorRankingEGDIController;
 use App\Http\Controllers\IndicatorRankingICTDIController;
 use App\Http\Controllers\IndicatorRankingWCRController;
 use App\Http\Controllers\PhilippinesReportsRankingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorldCompetitivenessRankingController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -127,15 +128,18 @@ Route::get('/phils-reports-ranking', [PhilippinesReportsRankingController::class
 Route::get('/world-competitiveness-ranking', [WorldCompetitivenessRankingController::class, 'getWorldCompetitivenessRanking']);
 Route::get('/digital-quality-of-life-index', [DigitalQualityOfLifeIndexController::class, 'getDigitalQualityOfLifeIndex']);
 Route::get('/ict-development-index', [ICTDevelopmentIndexController::class, 'getICTDevelopmentIndex']);
+Route::get('/e-government-development-index', [EGovernmentDevelopmentIndexController::class, 'getEGovernmentDevelopmentIndex']);
 // fetch data for gauge/overall/vsaseaneconomies
 Route::get('/get-ph-ranks-wcr', [WorldCompetitivenessRankingController::class, 'getPhRanksWCR']);
 Route::get('/get-ph-ranks-dqli', [DigitalQualityOfLifeIndexController::class, 'getPhRanksDQLI']);
 Route::get('/get-ph-ranks-gtmi', [GovTechMaturityIndexController::class, 'getPhRanksGTMI']);
 Route::get('/get-ph-ranks-ictdi', [ICTDevelopmentIndexController::class, 'getPhRanksICTDI']);
+Route::get('/get-ph-ranks-egdi', [EGovernmentDevelopmentIndexController::class, 'getPhRanksEGDI']);
 // fetch data indicator ranking
 Route::get('/get-indicator-ranking-wcr', [IndicatorRankingWCRController::class, 'getIndicatorRankingWCR']);
 Route::get('/get-indicator-ranking-dqli', [IndicatorRankingDQLIController::class, 'getIndicatorRankingDQLI']);
 Route::get('/get-indicator-ranking-ictdi', [IndicatorRankingICTDIController::class, 'getIndicatorRankingICTDI']);
+Route::get('/get-indicator-ranking-egdi', [IndicatorRankingEGDIController::class, 'getIndicatorRankingEGDI']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
