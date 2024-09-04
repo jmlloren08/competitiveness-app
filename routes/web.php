@@ -4,10 +4,7 @@ use App\Http\Controllers\DigitalQualityOfLifeIndexController;
 use App\Http\Controllers\EGovernmentDevelopmentIndexController;
 use App\Http\Controllers\GovTechMaturityIndexController;
 use App\Http\Controllers\ICTDevelopmentIndexController;
-use App\Http\Controllers\IndicatorRankingDQLIController;
-use App\Http\Controllers\IndicatorRankingEGDIController;
-use App\Http\Controllers\IndicatorRankingICTDIController;
-use App\Http\Controllers\IndicatorRankingWCRController;
+use App\Http\Controllers\NetworkReadinessIndexController;
 use App\Http\Controllers\PhilippinesReportsRankingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorldCompetitivenessRankingController;
@@ -44,26 +41,43 @@ Route::get('/reports/general/world-competitiveness-yearbook', function () {
 Route::get('/reports/digital/digital-quality-of-life-index', function () {
     return Inertia::render('Reports/Digital/DigitalQualityOfLifeIndex');
 })->name('reports.digital.dqli');
-
+// digital/digital-quality-of-life-index
+Route::get('/digital-quality-of-life-index', [DigitalQualityOfLifeIndexController::class, 'getDigitalQualityOfLifeIndex']);
+Route::get('/get-ph-ranks-dqli', [DigitalQualityOfLifeIndexController::class, 'getPhRanksDQLI']);
+Route::get('/get-indicator-ranking-dqli', [DigitalQualityOfLifeIndexController::class, 'getIndicatorRankingDQLI']);
+// digital/govtech-maturity-index
 Route::get('/reports/digital/govtech-maturity-index', function () {
     return Inertia::render('Reports/Digital/GovTechMaturityIndex');
 })->name('reports.digital.gmi');
-
+Route::get('/get-ph-ranks-gtmi', [GovTechMaturityIndexController::class, 'getPhRanksGTMI']);
+// digital/ict-development-index
 Route::get('/reports/digital/ict-development-index', function () {
     return Inertia::render('Reports/Digital/ICTDevelopmentIndex');
 })->name('reports.digital.ictdi');
-
+Route::get('/ict-development-index', [ICTDevelopmentIndexController::class, 'getICTDevelopmentIndex']);
+Route::get('/get-ph-ranks-ictdi', [ICTDevelopmentIndexController::class, 'getPhRanksICTDI']);
+Route::get('/get-indicator-ranking-ictdi', [ICTDevelopmentIndexController::class, 'getIndicatorRankingICTDI']);
+// digital/e-government-development-index
 Route::get('/reports/digital/e-government-development-index', function () {
     return Inertia::render('Reports/Digital/EGovernmentDevelopmentIndex');
 })->name('reports.digital.egdi');
-
+Route::get('/e-government-development-index', [EGovernmentDevelopmentIndexController::class, 'getEGovernmentDevelopmentIndex']);
+Route::get('/get-ph-ranks-egdi', [EGovernmentDevelopmentIndexController::class, 'getPhRanksEGDI']);
+Route::get('/get-indicator-ranking-egdi', [EGovernmentDevelopmentIndexController::class, 'getIndicatorRankingEGDI']);
+// digital/network-readiness-index
 Route::get('/reports/digital/network-readiness-index', function () {
     return Inertia::render('Reports/Digital/NetworkReadinessIndex');
 })->name('reports.digital.nri');
-
+Route::get('/network-readiness-index', [NetworkReadinessIndexController::class, 'getNetworkReadinessIndex']);
+Route::get('/get-ph-ranks-nri', [NetworkReadinessIndexController::class, 'getPhRanksNRI']);
+Route::get('/get-indicator-ranking-nri', [NetworkReadinessIndexController::class, 'getIndicatorRankingNRI']);
+// digital/world-digital-competitiveness-ranking
 Route::get('/reports/digital/world-digital-competitiveness-ranking', function () {
     return Inertia::render('Reports/Digital/WorldDigitalCompetitivenessRanking');
 })->name('reports.digital.wdcr');
+Route::get('/world-competitiveness-ranking', [WorldCompetitivenessRankingController::class, 'getWorldCompetitivenessRanking']);
+Route::get('/get-ph-ranks-wcr', [WorldCompetitivenessRankingController::class, 'getPhRanksWCR']);
+Route::get('/get-indicator-ranking-wcr', [WorldCompetitivenessRankingController::class, 'getIndicatorRankingWCR']);
 
 // education talent & innovation
 Route::get('/reports/educationtalent&innovation/programme-for-international-student-assessment', function () {
@@ -124,22 +138,6 @@ Route::get('/reports/trade/logistics-performance-index', function () {
 
 // fetch data for chart and table to homepage
 Route::get('/phils-reports-ranking', [PhilippinesReportsRankingController::class, 'getPhilippinesReportsRanking']);
-// fetch data for chart and table
-Route::get('/world-competitiveness-ranking', [WorldCompetitivenessRankingController::class, 'getWorldCompetitivenessRanking']);
-Route::get('/digital-quality-of-life-index', [DigitalQualityOfLifeIndexController::class, 'getDigitalQualityOfLifeIndex']);
-Route::get('/ict-development-index', [ICTDevelopmentIndexController::class, 'getICTDevelopmentIndex']);
-Route::get('/e-government-development-index', [EGovernmentDevelopmentIndexController::class, 'getEGovernmentDevelopmentIndex']);
-// fetch data for gauge/overall/vsaseaneconomies
-Route::get('/get-ph-ranks-wcr', [WorldCompetitivenessRankingController::class, 'getPhRanksWCR']);
-Route::get('/get-ph-ranks-dqli', [DigitalQualityOfLifeIndexController::class, 'getPhRanksDQLI']);
-Route::get('/get-ph-ranks-gtmi', [GovTechMaturityIndexController::class, 'getPhRanksGTMI']);
-Route::get('/get-ph-ranks-ictdi', [ICTDevelopmentIndexController::class, 'getPhRanksICTDI']);
-Route::get('/get-ph-ranks-egdi', [EGovernmentDevelopmentIndexController::class, 'getPhRanksEGDI']);
-// fetch data indicator ranking
-Route::get('/get-indicator-ranking-wcr', [IndicatorRankingWCRController::class, 'getIndicatorRankingWCR']);
-Route::get('/get-indicator-ranking-dqli', [IndicatorRankingDQLIController::class, 'getIndicatorRankingDQLI']);
-Route::get('/get-indicator-ranking-ictdi', [IndicatorRankingICTDIController::class, 'getIndicatorRankingICTDI']);
-Route::get('/get-indicator-ranking-egdi', [IndicatorRankingEGDIController::class, 'getIndicatorRankingEGDI']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

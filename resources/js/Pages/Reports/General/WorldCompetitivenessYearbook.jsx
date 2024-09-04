@@ -4,9 +4,9 @@ import NavBar from '@/Components/NavBar';
 import Footer from '@/Components/Footer';
 import { Head, Link } from '@inertiajs/react';
 import Gauge from '@/Components/Gauge';
-import WorldCompetitivenessRanking from '@/Components/WorldCompetitivenessRanking';
+import WorldCompetitivenessRanking from '@/Components/Custom/Digital/WCR/WorldCompetitivenessRanking';
 import axios from 'axios';
-import IndicatorRankingWCR from '@/Components/IndicatorRankingWCR';
+import IndicatorRankingWCR from '@/Components/Custom/Digital/WCR/IndicatorRankingWCR';
 
 export default function WorldCompetitivenessYearBook() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);

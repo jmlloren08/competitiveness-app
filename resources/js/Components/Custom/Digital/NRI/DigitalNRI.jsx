@@ -2,36 +2,36 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 import axios from 'axios';
 
-export default function DigitalICTDI() {
-    const [chartdataICTDI, setChartDataICTDI] = useState([]);
+export default function DigitalNRI() {
+    const [chartDataNRI, setChartDataNRI] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [loadingICTDI, setLoadingICTDI] = useState(true);
+    const [loadingNRI, setLoadingNRI] = useState(true);
 
     useEffect(() => {
-        axios.get('/ict-development-index')
+        axios.get('/network-readiness-index')
             .then(response => {
                 const { years, countries, data } = response.data;
-                setYears(years.map(item => item.ictdi_year));
-                setCountries(countries.map(item => item.ictdi_country));
-                setChartDataICTDI(data);
-                setLoadingICTDI(false);
+                setYears(years.map(item => item.nri_year));
+                setCountries(countries.map(item => item.nri_country));
+                setChartDataNRI(data);
+                setLoadingNRI(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setLoadingICTDI(false);
+                setLoadingNRI(false);
             });
     }, []);
 
-    if (loadingICTDI) {
+    if (loadingNRI) {
         return <div>Please wait...</div>
     }
 
     const series = countries.map(country => ({
         name: country,
-        data: chartdataICTDI.filter(item => item.ictdi_country === country).map(item => ({
-            x: item.ictdi_year,
-            y: item.ictdi_count
+        data: chartDataNRI.filter(item => item.nri_country === country).map(item => ({
+            x: item.nri_year,
+            y: item.nri_count
         }))
     }));
 
@@ -66,7 +66,7 @@ export default function DigitalICTDI() {
         }
     }
 
-    const ictdi_economies = ['2023', 'NDA', 'NDA', 'NDA', 'NDA'];
+    const nri_economies = ['134 economies', '131 economies', '130 economies', '134 economies', '121 economies'];
 
     return (
         <div>
@@ -90,7 +90,7 @@ export default function DigitalICTDI() {
                                 <div key={year} className='mb-2'>
                                     <span className='font-semibold'>{`${year}: `}</span>
                                     <span>
-                                        {chartdataICTDI.find(item => item.ictdi_country === country && item.ictdi_year === year)?.ictdi_count || 'NDA'}
+                                        {chartDataNRI.find(item => item.nri_country === country && item.nri_year === year)?.nri_count || 'NDA'}
                                     </span>
                                 </div>
                             ))}
@@ -110,7 +110,7 @@ export default function DigitalICTDI() {
                             </tr>
                             <tr>
                                 <th className='p-2 border md:border-gray-100'>Baseline No.</th>
-                                {ictdi_economies.map((economy, index) => (
+                                {nri_economies.map((economy, index) => (
                                     <th className='p-2 border md:border-gray-100' key={index}>{economy}</th>
                                 ))}
                             </tr>
@@ -121,7 +121,7 @@ export default function DigitalICTDI() {
                                     <td className='p-2 text-center'>{country}</td>
                                     {years.map(year => (
                                         <td key={year} className='p-2 text-left sm:text-center'>
-                                            {chartdataICTDI.find(item => item.ictdi_country === country && item.ictdi_year === year)?.ictdi_count || 'NDA'}
+                                            {chartDataNRI.find(item => item.nri_country === country && item.nri_year === year)?.nri_count || 'NDA'}
                                         </td>
                                     ))}
                                 </tr>

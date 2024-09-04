@@ -5,8 +5,8 @@ import Footer from '@/Components/Footer';
 import { Head, Link } from '@inertiajs/react';
 import Gauge from '@/Components/Gauge';
 import axios from 'axios';
-import DigitalICTDI from '@/Components/DigitalICTDI';
-import IndicatorRankingICTDI from '@/Components/IndicatorRankingICTDI';
+import DigitalICTDI from '@/Components/Custom/Digital/ICTDI/DigitalICTDI';
+import IndicatorRankingICTDI from '@/Components/Custom/Digital/ICTDI/IndicatorRankingICTDI';
 
 export default function ICTDevelopmentIndex() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ir_ph_vs_asean_dqli', function (Blueprint $table) {
+        Schema::create('gcr_digital_dqli_ir_ph_vs_aseans', function (Blueprint $table) {
             $table->id();
             $table->string('indicator_ranking');
-            $table->integer('years');
+            $table->string('years');
             $table->integer('country_id');
             $table->string('country');
             $table->string('counts');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ir_ph_vs_asean_dqli');
+        Schema::dropIfExists('gcr_digital_dqli_ir_ph_vs_aseans');
     }
 };

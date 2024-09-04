@@ -5,8 +5,8 @@ import Footer from '@/Components/Footer';
 import { Head, Link } from '@inertiajs/react';
 import Gauge from '@/Components/Gauge';
 import axios from 'axios';
-import DigitalEGDI from '@/Components/DigitalEGDI';
-import IndicatorRankingEGDI from '@/Components/IndicatorRankingEGDI';
+import DigitalEGDI from '@/Components/Custom/Digital/EGDI/DigitalEGDI';
+import IndicatorRankingEGDI from '@/Components/Custom/Digital/EGDI/IndicatorRankingEGDI';
 
 export default function EGovernmentDevelopmentIndex() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);

@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gcr_general_wcy_ph_vs_ranks', function (Blueprint $table) {
+        Schema::create('gcr_digital_ictdi_ph_vs_aseans', function (Blueprint $table) {
             $table->id();
-            $table->string('wcy_country');
-            $table->string('wcy_count');
-            $table->string('wcy_year');
-            $table->string('wcy_economy');
+            $table->string('ictdi_country');
+            $table->string('ictdi_count');
+            $table->string('ictdi_year');
+            $table->string('ictdi_economy');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gcr_general_wcy_ph_vs_ranks');
+        Schema::dropIfExists('gcr_digital_ictdi_ph_vs_aseans');
     }
 };

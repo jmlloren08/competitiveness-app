@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('phranks', function (Blueprint $table) {
+        Schema::create('gcr_general_wcy_ph_ranks', function (Blueprint $table) {
             $table->id();
             $table->string('report_name');
             $table->string('source');
             $table->string('area_block');
-            $table->string('rank');
-            $table->string('baseline_economies');
+            $table->integer('rank');
+            $table->integer('baseline_economies');
             $table->string('year');
+            $table->string('rank_in_asean');
+            $table->string('remarks');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('phranks');
+        Schema::dropIfExists('gcr_general_wcy_ph_ranks');
     }
 };

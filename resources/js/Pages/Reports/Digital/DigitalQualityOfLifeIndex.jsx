@@ -5,8 +5,8 @@ import Footer from '@/Components/Footer';
 import { Head, Link } from '@inertiajs/react';
 import Gauge from '@/Components/Gauge';
 import axios from 'axios';
-import IndicatorRankingDQLI from '@/Components/IndicatorRankingDQLI';
-import DigitalDQOLI from '@/Components/DigitalDQOLI';
+import IndicatorRankingDQLI from '@/Components/Custom/Digital/DQLI/IndicatorRankingDQLI';
+import DigitalDQOLI from '@/Components/Custom/Digital/DQLI/DigitalDQOLI';
 
 export default function DigitalQualityOfLifeIndex() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);

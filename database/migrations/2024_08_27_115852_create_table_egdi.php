@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gcr_digital_egdi', function (Blueprint $table) {
+        Schema::create('gcr_digital_egdi_ph_vs_ranks', function (Blueprint $table) {
             $table->id();
             $table->string('egdi_country');
             $table->string('egdi_count');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gcr_digital_egdi');
+        Schema::dropIfExists('gcr_digital_egdi_ph_vs_ranks');
     }
 };

@@ -4,10 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\GcrGeneralWcyPhRanks;
 use App\Models\GcrGeneralWcyPhVsAseans;
+use App\Models\GcrGeneralWcyIrphVsAseans;
 use Illuminate\Support\Facades\Log;
 
 class WorldCompetitivenessRankingController extends Controller
 {
+    public function getPhRanksWCR()
+    {
+        try {
+            $gaugeData = GcrGeneralWcyPhRanks::select('area_block')->distinct()->first();
+            $latestYear = GcrGeneralWcyPhRanks::max('year');
+            $overall = GcrGeneralWcyPhRanks::select('source', 'rank', 'baseline_economies')->where('year', $latestYear)->get();
+            $vsAseanEconomies = GcrGeneralWcyPhRanks::select('rank_in_asean', 'remarks')->distinct()->get();
+
+            return response()->json([
+                'gauge' => $gaugeData,
+                'latestYear' => $latestYear,
+                'overall' => $overall,
+                'vsAseanEconomies' => $vsAseanEconomies
+            ]);
+        } catch (\Exception $e) {
+
+            Log::error("Error fetching PH Ranks: " . $e->getMessage());
+            return response()->json(['message' => 'Internal server error'], 500);
+        }
+    }
     public function getWorldCompetitivenessRanking()
     {
         try {
@@ -26,24 +47,23 @@ class WorldCompetitivenessRankingController extends Controller
             return response()->json(['message' => 'Internal server error'], 500);
         }
     }
-
-    public function getPhRanksWCR()
+    public function getIndicatorRankingWCR()
     {
         try {
-            $gaugeData = GcrGeneralWcyPhRanks::select('area_block')->distinct()->first();
-            $latestYear = GcrGeneralWcyPhRanks::max('year');
-            $overall = GcrGeneralWcyPhRanks::select('source', 'rank', 'baseline_economies')->where('year', $latestYear)->get();
-            $vsAseanEconomies = GcrGeneralWcyPhRanks::select('rank_in_asean', 'remarks')->distinct()->get();
 
-            return response()->json([
-                'gauge' => $gaugeData,
-                'latestYear' => $latestYear,
-                'overall' => $overall,
-                'vsAseanEconomies' => $vsAseanEconomies
-            ]);
+            $data = [];
+
+            for ($year = 2019; $year <= 2023; $year++) {
+                $data[$year] = GcrGeneralWcyIrphVsAseans::select('indicator_ranking', 'years', 'country', 'counts')
+                    ->where('years', $year)
+                    ->orderBy('country_id')
+                    ->get();
+            }
+
+            return response()->json($data);
         } catch (\Exception $e) {
 
-            Log::error("Error fetching PH Ranks: " . $e->getMessage());
+            Log::error("Error fetching Indicator Ranking for WCR: " . $e->getMessage());
             return response()->json(['message' => 'Internal server error'], 500);
         }
     }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GcrDigitalDqliIrPhVsAseans extends Model
+class GcrDigitalNriPhRanks extends Model
 {
     use HasFactory;
 
@@ -15,9 +15,13 @@ class GcrDigitalDqliIrPhVsAseans extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'indicator_ranking',
+        'report_name',
+        'source',
+        'area_block',
+        'rank',
+        'baseline_economies',
         'year',
-        'country',
-        'count'
+        'rank_in_asean',
+        'remarks'
     ];
 }

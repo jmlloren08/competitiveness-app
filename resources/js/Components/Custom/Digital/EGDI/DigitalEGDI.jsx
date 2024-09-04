@@ -79,10 +79,10 @@ export default function DigitalEGDI() {
                 className='mt-3'
             />
 
+            {/* mobile view */}
             <div className='overflow-x-auto mt-6'>
                 <h2 className='text-white text-center font-bold bg-blue-900 p-3'>TABLE</h2>
                 <div className="block md:hidden">
-                    {/* mobile view */}
                     {countries.map(country => (
                         <div key={country} className={`border border-gray-100 rounded-lg mb-4 p-4 ${country === 'Philippines' ? 'bg-blue-300' : 'bg-white'}`}>
                             <h3 className='text-lg font-bold text-blue-900 mb-2'>{`Economy: ${country}`}</h3>
@@ -97,9 +97,9 @@ export default function DigitalEGDI() {
                         </div>
                     ))}
                 </div>
-                
+
+                {/* desktop view */}
                 <div className="hidden md:block">
-                    {/* desktop view */}
                     <table className='min-w-full border-collapse'>
                         <thead className='bg-blue-900 text-white'>
                             <tr>
