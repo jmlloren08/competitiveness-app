@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('gcr_general_wcy_ir_ph_vs_aseans', function (Blueprint $table) {
             $table->id();
             $table->string('indicator_ranking');
-            $table->string('year');
+            $table->string('years');
+            $table->integer('country_id');
             $table->string('country');
-            $table->string('count');
+            $table->string('counts');
             $table->timestamps();
         });
     }

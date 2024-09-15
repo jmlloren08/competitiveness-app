@@ -93,16 +93,16 @@ export default function PhilippinesReportsRanking() {
         <div>
             <div className='flex justify-center'>
                 <div className='flex items-center mr-4'>
-                    <span className='w-4 h-4 bg-red-500 rounded-full inline-block mr-2'></span>
-                    <span>Bottom Third</span>
+                    <span className='w-4 h-4 bg-green-500 rounded-full inline-block mr-2'></span>
+                    <span>Top Third</span>
                 </div>
                 <div className='flex items-center mr-4'>
                     <span className='w-4 h-4 bg-yellow-500 rounded-full inline-block mr-2'></span>
                     <span>Middle Third</span>
                 </div>
                 <div className='flex items-center mr-4'>
-                    <span className='w-4 h-4 bg-green-500 rounded-full inline-block mr-2'></span>
-                    <span>Top Third</span>
+                    <span className='w-4 h-4 bg-red-500 rounded-full inline-block mr-2'></span>
+                    <span>Bottom Third</span>
                 </div>
             </div>
 

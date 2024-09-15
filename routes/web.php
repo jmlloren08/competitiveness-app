@@ -32,10 +32,13 @@ Route::get('/contact-us', function () {
 })->name('contact-us');
 
 // generate reports
-// general
+// general/wcy
 Route::get('/reports/general/world-competitiveness-yearbook', function () {
     return Inertia::render('Reports/General/WorldCompetitivenessYearbook');
 })->name('reports.general.wcy');
+Route::get('/world-competitiveness-ranking', [WorldCompetitivenessRankingController::class, 'getWorldCompetitivenessRanking']);
+Route::get('/get-ph-ranks-wcr', [WorldCompetitivenessRankingController::class, 'getPhRanksWCR']);
+Route::get('/get-indicator-ranking-wcr', [WorldCompetitivenessRankingController::class, 'getIndicatorRankingWCR']);
 
 // digital
 Route::get('/reports/digital/digital-quality-of-life-index', function () {
@@ -75,9 +78,6 @@ Route::get('/get-indicator-ranking-nri', [NetworkReadinessIndexController::class
 Route::get('/reports/digital/world-digital-competitiveness-ranking', function () {
     return Inertia::render('Reports/Digital/WorldDigitalCompetitivenessRanking');
 })->name('reports.digital.wdcr');
-Route::get('/world-competitiveness-ranking', [WorldCompetitivenessRankingController::class, 'getWorldCompetitivenessRanking']);
-Route::get('/get-ph-ranks-wcr', [WorldCompetitivenessRankingController::class, 'getPhRanksWCR']);
-Route::get('/get-indicator-ranking-wcr', [WorldCompetitivenessRankingController::class, 'getIndicatorRankingWCR']);
 
 // education talent & innovation
 Route::get('/reports/educationtalent&innovation/programme-for-international-student-assessment', function () {

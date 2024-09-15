@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GcrGeneralWcyIrPhVsAseans;
+use App\Models\GcrGeneralWcyIrPhVsAseanss;
 use App\Models\GcrGeneralWcyPhRanks;
 use App\Models\GcrGeneralWcyPhVsAseans;
-use App\Models\GcrGeneralWcyIrphVsAseans;
 use Illuminate\Support\Facades\Log;
 
 class WorldCompetitivenessRankingController extends Controller
@@ -32,7 +33,7 @@ class WorldCompetitivenessRankingController extends Controller
     public function getWorldCompetitivenessRanking()
     {
         try {
-            $years = GcrGeneralWcyPhVsAseans::select('wcy_year')->distinct()->orderBy('wcy_year', 'desc')->get();
+            $years = GcrGeneralWcyPhVsAseans::select('wcy_year')->distinct()->orderBy('wcy_year', 'asc')->get();
             $countries = GcrGeneralWcyPhVsAseans::select('wcy_country')->distinct()->get();
             $wcrData = GcrGeneralWcyPhVsAseans::select('wcy_country', 'wcy_count', 'wcy_year', 'wcy_economy')->get();
 
@@ -54,7 +55,7 @@ class WorldCompetitivenessRankingController extends Controller
             $data = [];
 
             for ($year = 2019; $year <= 2023; $year++) {
-                $data[$year] = GcrGeneralWcyIrphVsAseans::select('indicator_ranking', 'years', 'country', 'counts')
+                $data[$year] = GcrGeneralWcyIrPhVsAseanss::select('indicator_ranking', 'years', 'country', 'counts')
                     ->where('years', $year)
                     ->orderBy('country_id')
                     ->get();
