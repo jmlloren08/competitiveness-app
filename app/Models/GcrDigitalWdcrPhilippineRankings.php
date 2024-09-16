@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GcrDigitalEgdiIrPhVsAseans extends Model
+class GcrDigitalWdcrPhilippineRankings extends Model
 {
     use HasFactory;
 
@@ -15,10 +15,13 @@ class GcrDigitalEgdiIrPhVsAseans extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'indicator_ranking',
-        'years',
-        'country_id',
-        'country',
-        'counts'
+        'report_name',
+        'source',
+        'area_block',
+        'rank',
+        'baseline_economies',
+        'year',
+        'rank_in_asean',
+        'remarks'
     ];
 }

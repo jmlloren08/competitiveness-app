@@ -34,7 +34,7 @@ class EGovernmentDevelopmentIndexController extends Controller
     {
         try {
 
-            $years = GcrDigitalEgdiPhVsAseans::select('egdi_year')->distinct()->orderBy('egdi_year', 'desc')->get();
+            $years = GcrDigitalEgdiPhVsAseans::select('egdi_year')->distinct()->orderBy('egdi_year', 'asc')->get();
             $countries = GcrDigitalEgdiPhVsAseans::select('egdi_country')->distinct()->get();
             $egdiData = GcrDigitalEgdiPhVsAseans::select('egdi_country', 'egdi_count', 'egdi_year', 'egdi_economy')->get();
 

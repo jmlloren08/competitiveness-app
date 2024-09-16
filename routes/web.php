@@ -6,8 +6,10 @@ use App\Http\Controllers\GovTechMaturityIndexController;
 use App\Http\Controllers\ICTDevelopmentIndexController;
 use App\Http\Controllers\NetworkReadinessIndexController;
 use App\Http\Controllers\PhilippinesReportsRankingController;
+use App\Http\Controllers\PISAController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorldCompetitivenessRankingController;
+use App\Http\Controllers\WorldDigitalCompetitivenessRankingController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -78,11 +80,16 @@ Route::get('/get-indicator-ranking-nri', [NetworkReadinessIndexController::class
 Route::get('/reports/digital/world-digital-competitiveness-ranking', function () {
     return Inertia::render('Reports/Digital/WorldDigitalCompetitivenessRanking');
 })->name('reports.digital.wdcr');
+Route::get('/get-digital-wdcr-philippine-ranking', [WorldDigitalCompetitivenessRankingController::class, 'getDigitalWDCRPhilippineRanking']);
+Route::get('/get-digital-wdcr-view-the-ranking', [WorldDigitalCompetitivenessRankingController::class, 'getDigitalWDCRViewTheRanking']);
+Route::get('/get-digital-wdcr-indicator-ranking', [WorldDigitalCompetitivenessRankingController::class, 'getDigitalWDCRIndicatorRanking']);
 
 // education talent & innovation
 Route::get('/reports/educationtalent&innovation/programme-for-international-student-assessment', function () {
     return Inertia::render('Reports/EducationTalent&Innovation/ProgrammeForInternationalStudentAssessment');
 })->name('reports.educationtalent&innovation.pisa');
+Route::get('/get-eti-pisa-philippine-ranking', [PISAController::class, 'getETIPISAPhilippineRanking']);
+Route::get('/get-eti-pisa-indicator-ranking', [PISAController::class, 'getETIPISAIndicatorRanking']);
 
 Route::get('/reports/educationtalent&innovation/global-innovation-index', function () {
     return Inertia::render('Reports/EducationTalent&Innovation/GlobalInnovationIndex');

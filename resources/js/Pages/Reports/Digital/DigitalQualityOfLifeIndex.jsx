@@ -113,21 +113,21 @@ export default function DigitalQualityOfLifeIndex() {
 
                     <section>
                         <div className='max-w-6xl mx-auto shadow-lg mb-12 p-5 rounded'>
-                            <p className='text-blue-900 text-1xl'><span className='font-bold'>CATEGORY:</span> DIGITAL</p>
-                            <p className='text-blue-900 text-1xl mb-3'><span className='font-bold'>PUBLISHER:</span> {source}, {latestYear}</p>
+                            <p className='text-blue-900 text-xl'><span className='font-bold'>CATEGORY:</span> DIGITAL</p>
+                            <p className='text-blue-900 text-xl mb-3'><span className='font-bold'>PUBLISHER:</span> {source}, {latestYear}</p>
                             <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>PHILIPPINES RANKING</h2>
                             {/* overall vs asean economies */}
                             <div className="flex flex-col sm:flex-row mb-6">
                                 <div className="flex flex-col w-full">
                                     <div className="bg-sky-900 rounded-lg drop-shadow">
-                                        <p className="text-white m-3">OVERALL</p>
-                                        <h1 className='text-white text-center text-7xl font-bold'>{overallRank}</h1>
-                                        <p className="text-white text-center m-3">OVER {baselineEconomies} ECONOMIES</p>
+                                        <p className="text-white text-xl m-3">OVERALL</p>
+                                        <h1 className='text-white text-center text-8xl font-bold'>{overallRank}</h1>
+                                        <p className="text-white text-center text-xl m-3">OVER {baselineEconomies} ECONOMIES</p>
                                     </div>
                                     <div className="bg-sky-700 rounded-lg mt-3 drop-shadow">
-                                        <p className="text-white m-3">VS ASEAN ECONOMIES</p>
-                                        <h1 className='text-white text-center text-7xl font-bold'>{aseanRank}</h1>
-                                        <p className="text-white text-center m-3">{remarks}</p>
+                                        <p className="text-white text-xl m-3">VS ASEAN ECONOMIES</p>
+                                        <h1 className='text-white text-center text-8xl font-bold'>{aseanRank}</h1>
+                                        <p className="text-white text-center text-xl m-3">{remarks}</p>
                                     </div>
                                 </div>
                                 {/* gauge meter */}

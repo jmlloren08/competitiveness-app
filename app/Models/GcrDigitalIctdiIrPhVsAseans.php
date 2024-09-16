@@ -16,8 +16,9 @@ class GcrDigitalIctdiIrPhVsAseans extends Model
      */
     protected $fillable = [
         'indicator_ranking',
-        'year',
+        'years',
+        'country_id',
         'country',
-        'count'
+        'counts'
     ];
 }

@@ -239,7 +239,7 @@ export default function ReportPage() {
                                 {menuItems.map((item, index) => (
                                     <div key={index} className="relative w-full sm:w-auto">
                                         <button
-                                            className='bg-gradient-to-r from-blue-900 to-blue-950 text-white font-bold py-4 px-6 rounded-lg transition-transform transform hover:scale-105 w-full h-full sm:w-10/12 sm:h-72'
+                                            className='bg-gradient-to-r from-blue-900 to-blue-950 text-white font-bold py-4 px-6 rounded-lg transition-transform transform hover:scale-105 w-full h-full sm:w-11/12 sm:h-72'
                                             onClick={() => handleMenuClick(item.name)}
                                         >
                                             <div>

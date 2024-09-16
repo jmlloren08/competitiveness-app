@@ -34,7 +34,7 @@ class NetworkReadinessIndexController extends Controller
     {
         try {
 
-            $years = GcrDigitalNriPhVsAseans::select('nri_year')->distinct()->orderBy('nri_year', 'desc')->get();
+            $years = GcrDigitalNriPhVsAseans::select('nri_year')->distinct()->orderBy('nri_year', 'asc')->get();
             $countries = GcrDigitalNriPhVsAseans::select('nri_country')->distinct()->get();
             $nriData = GcrDigitalNriPhVsAseans::select('nri_country', 'nri_count', 'nri_year', 'nri_economy')->get();
 
