@@ -6,7 +6,7 @@ const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLin
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 const Gauge = React.lazy(() => import('@/Components/Gauge'));
-const DigitalGII = React.lazy(() => import('@/Components/Custom/ETI/GII/DigitalGII'));
+const ETIGII = React.lazy(() => import('@/Components/Custom/ETI/GII/ETIGII'));
 const IndicatorRankingGII = React.lazy(() => import( '@/Components/Custom/ETI/GII/IndicatorRankingGII'));
 
 export default function GlobalInnovationIndex() {
@@ -148,7 +148,7 @@ export default function GlobalInnovationIndex() {
                                 <h2 className='text-white text-center text-xl font-bold bg-blue-950 p-3'>VIEW THE RANKINGS</h2>
                             </div>
 
-                            <DigitalGII />
+                            <ETIGII />
 
                             <div className='mt-12'>
                                 <h2 className='text-white text-center text-xl font-bold bg-blue-950 p-3'>INDICATOR RANKINGS</h2>

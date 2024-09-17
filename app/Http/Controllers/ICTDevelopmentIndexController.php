@@ -33,12 +33,11 @@ class ICTDevelopmentIndexController extends Controller
     public function getICTDevelopmentIndex()
     {
         try {
-            // $years = GcrDigitalIctdiPhVsAseans::select('ictdi_year')->distinct()->orderBy('ictdi_year', 'desc')->get();
+
             $countries = GcrDigitalIctdiPhVsAseans::select('ictdi_country')->distinct()->get();
             $ictdiData = GcrDigitalIctdiPhVsAseans::select('ictdi_country', 'ictdi_count', 'ictdi_year', 'ictdi_economy')->get();
 
             return response()->json([
-                // 'years' => $years,
                 'countries' => $countries,
                 'data' => $ictdiData
             ]);

@@ -35,12 +35,12 @@ class WorldDigitalCompetitivenessRankingController extends Controller
         try {
             $years = GcrDigitalWdcrIndicatorRankings::select('wdcr_year')->distinct()->orderBy('wdcr_year', 'asc')->get();
             $countries = GcrDigitalWdcrIndicatorRankings::select('wdcr_country')->distinct()->get();
-            $wcrData = GcrDigitalWdcrIndicatorRankings::select('wdcr_country', 'wdcr_count', 'wdcr_year', 'wdcr_economy')->get();
+            $wdcrData = GcrDigitalWdcrIndicatorRankings::select('wdcr_country', 'wdcr_count', 'wdcr_year', 'wdcr_economy')->get();
 
             return response()->json([
                 'years' => $years,
                 'countries' => $countries,
-                'data' => $wcrData
+                'data' => $wdcrData
             ]);
         } catch (\Exception $e) {
 

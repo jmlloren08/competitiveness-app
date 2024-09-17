@@ -3,21 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\GcrEtiGiiIndicatorRankings;
-use App\Models\GcrEtiGiiPhilippineRankings;
-use App\Models\GcrEtiGiiViewTheRankings;
+use App\Models\GcrEtiGtciIndicatorRankings;
+use App\Models\GcrEtiGtciPhilippineRankings;
+use App\Models\GcrEtiGtciViewTheRankings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class GlobalInnovationIndexController extends Controller
+class GlobalTalentCompetitivenessIndexController extends Controller
 {
-    public function getETIGIIPhilippineRanking()
+    public function getETIGTCIPhilippineRanking()
     {
         try {
 
-            $gaugeData = GcrEtiGiiPhilippineRankings::select('area_block')->distinct()->first();
-            $latestYear = GcrEtiGiiPhilippineRankings::max('year');
-            $overall = GcrEtiGiiPhilippineRankings::select('source', 'rank', 'baseline_economies')->where('year', $latestYear)->get();
-            $vsAseanEconomies = GcrEtiGiiPhilippineRankings::select('rank_in_asean', 'remarks')->distinct()->get();
+            $gaugeData = GcrEtiGtciPhilippineRankings::select('area_block')->distinct()->first();
+            $latestYear = GcrEtiGtciPhilippineRankings::max('year');
+            $overall = GcrEtiGtciPhilippineRankings::select('source', 'rank', 'baseline_economies')->where('year', $latestYear)->get();
+            $vsAseanEconomies = GcrEtiGtciPhilippineRankings::select('rank_in_asean', 'remarks')->distinct()->get();
 
             return response()->json([
                 'gauge' => $gaugeData,
@@ -31,31 +32,32 @@ class GlobalInnovationIndexController extends Controller
             return response()->json(['message' => 'Internal server error'], 500);
         }
     }
-    public function getETIGIIViewTheRanking()
+    public function getETIGTCIViewTheRanking()
     {
         try {
-            $years = GcrEtiGiiViewTheRankings::select('gii_year')->distinct()->orderBy('gii_year', 'asc')->get();
-            $countries = GcrEtiGiiViewTheRankings::select('gii_country')->distinct()->get();
-            $giiData = GcrEtiGiiViewTheRankings::select('gii_country', 'gii_count', 'gii_year', 'gii_economy')->get();
+
+            $years = GcrEtiGtciViewTheRankings::select('gtci_year')->distinct()->orderBy('gtci_year', 'asc')->get();
+            $countries = GcrEtiGtciViewTheRankings::select('gtci_country')->distinct()->get();
+            $gtciData = GcrEtiGtciViewTheRankings::select('gtci_country', 'gtci_count', 'gtci_year', 'gtci_economy')->get();
 
             return response()->json([
                 'years' => $years,
                 'countries' => $countries,
-                'data' => $giiData
+                'data' => $gtciData
             ]);
         } catch (\Exception $e) {
 
             Log::error("Error fetching View the Ranking: " . $e->getMessage());
         }
     }
-    public function getETIGIIIndicatorRanking()
+    public function getETIGTCIIndicatorRanking()
     {
         try {
 
             $data = [];
 
             for ($year = 2019; $year <= 2023; $year++) {
-                $data[$year] = GcrEtiGiiIndicatorRankings::select('indicator_ranking', 'years', 'country', 'counts')
+                $data[$year] = GcrEtiGtciIndicatorRankings::select('indicator_ranking', 'years', 'country', 'counts')
                     ->where('years', $year)
                     ->orderBy('country_id')
                     ->orderBy(column: 'id')

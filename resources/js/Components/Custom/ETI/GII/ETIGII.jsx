@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 import axios from 'axios';
 
-export default function DigitalGII() {
+export default function ETIGII() {
     const [chartDataWDCR, setChartDataWDCR] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
