@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DigitalQualityOfLifeIndexController;
 use App\Http\Controllers\EGovernmentDevelopmentIndexController;
+use App\Http\Controllers\GlobalInnovationIndexController;
 use App\Http\Controllers\GovTechMaturityIndexController;
 use App\Http\Controllers\ICTDevelopmentIndexController;
 use App\Http\Controllers\NetworkReadinessIndexController;
@@ -94,6 +95,9 @@ Route::get('/get-eti-pisa-indicator-ranking', [PISAController::class, 'getETIPIS
 Route::get('/reports/educationtalent&innovation/global-innovation-index', function () {
     return Inertia::render('Reports/EducationTalent&Innovation/GlobalInnovationIndex');
 })->name('reports.educationtalent&innovation.gii');
+Route::get('/get-eti-gii-philippine-ranking', [GlobalInnovationIndexController::class, 'getETIGIIPhilippineRanking']);
+Route::get('/get-eti-gii-view-the-ranking', [GlobalInnovationIndexController::class, 'getETIGIIViewTheRanking']);
+Route::get('/get-eti-gii-indicator-ranking', [GlobalInnovationIndexController::class, 'getETIGIIIndicatorRanking']);
 
 Route::get('/reports/educationtalent&innovation/global-talent-competitiveness-index', function () {
     return Inertia::render('Reports/EducationTalent&Innovation/GlobalTalentCompetitivenessIndex');
@@ -156,4 +160,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+// disable the login and register url if someone try to modify the url in the browser
+Route::permanentRedirect('/404', '/login');
+Route::permanentRedirect('/404', '/register');
+Route::permanentRedirect('/404', '/password/reset');

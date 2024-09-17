@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import NavBar from '@/Components/NavBar';
-import Footer from '@/Components/Footer';
+import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
-import Gauge from '@/Components/Gauge';
 import axios from 'axios';
-import DigitalWDCR from '@/Components/Custom/Digital/WDCR/DigitalWDCR';
-import IndicatorRankingWDCR from '@/Components/Custom/Digital/WDCR/IndicatorRankingWDCR';
+
+const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
+const NavBar = React.lazy(() => import('@/Components/NavBar'));
+const Footer = React.lazy(() => import('@/Components/Footer'));
+const Gauge = React.lazy(() => import('@/Components/Gauge'));
+const DigitalWDCR = React.lazy(() => import('@/Components/Custom/Digital/WDCR/DigitalWDCR'));
+const IndicatorRankingWDCR = React.lazy(() => import('@/Components/Custom/Digital/WDCR/IndicatorRankingWDCR'));
 
 export default function WorldDigitalCompetitivenessRanking() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);

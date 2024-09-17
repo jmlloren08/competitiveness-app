@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import NavBar from '@/Components/NavBar';
-import Footer from '@/Components/Footer';
+import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
-import Gauge from '@/Components/Gauge';
 import axios from 'axios';
-import DigitalNRI from '@/Components/Custom/Digital/NRI/DigitalNRI';
-import IndicatorRankingNRI from '@/Components/Custom/Digital/NRI/IndicatorRankingNRI';
+
+const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
+const NavBar = React.lazy(() => import('@/Components/NavBar'));
+const Footer = React.lazy(() => import('@/Components/Footer'));
+const Gauge = React.lazy(() => import('@/Components/Gauge'));
+const DigitalNRI = React.lazy(() => import('@/Components/Custom/Digital/NRI/DigitalNRI'));
+const IndicatorRankingNRI = React.lazy(() => import('@/Components/Custom/Digital/NRI/IndicatorRankingNRI'));
 
 export default function NetworkReadinessIndex() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);

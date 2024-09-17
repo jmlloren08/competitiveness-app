@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import NavBar from '@/Components/NavBar';
-import Footer from '@/Components/Footer';
+import React, { useState } from 'react';
 import { Head } from '@inertiajs/react';
+
+const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
+const NavBar = React.lazy(() => import('@/Components/NavBar'));
+const Footer = React.lazy(() => import('@/Components/Footer'));
 
 export default function AboutPage() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);

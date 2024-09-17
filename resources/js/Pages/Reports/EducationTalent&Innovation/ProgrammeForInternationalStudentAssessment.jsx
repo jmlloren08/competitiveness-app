@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import NavBar from '@/Components/NavBar';
-import Footer from '@/Components/Footer';
+import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
-import Gauge from '@/Components/Gauge';
 import axios from 'axios';
-import IndicatorRankingPISA from '@/Components/Custom/ETI/IndicatorRankingPISA';
+
+const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
+const NavBar = React.lazy(() => import('@/Components/NavBar'));
+const Footer = React.lazy(() => import('@/Components/Footer'));
+const Gauge = React.lazy(() => import('@/Components/Gauge'));
+const IndicatorRankingPISA = React.lazy(() => import('@/Components/Custom/ETI/IndicatorRankingPISA'));
 
 export default function ProgrammeForInternationalStudentAssessment() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);

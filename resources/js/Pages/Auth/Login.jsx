@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
-import Checkbox from '@/Components/Checkbox';
-import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import React, { useEffect } from 'react';
 import { Head, Link, useForm } from '@inertiajs/react';
+
+const Checkbox = React.lazy(() => import('@/Components/Checkbox'));
+const GuestLayout = React.lazy(() => import('@/Layouts/GuestLayout'));
+const InputError = React.lazy(() => import('@/Components/InputError'));
+const InputLabel = React.lazy(() => import('@/Components/InputLabel'));
+const PrimaryButton = React.lazy(() => import('@/Components/PrimaryButton'));
+const TextInput = React.lazy(() => import('@/Components/TextInput'));
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({

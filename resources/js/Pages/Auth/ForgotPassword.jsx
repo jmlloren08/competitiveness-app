@@ -1,8 +1,10 @@
-import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import React from 'react';
 import { Head, useForm } from '@inertiajs/react';
+
+const GuestLayout = React.lazy(() => import('@/Layouts/GuestLayout'));
+const InputError = React.lazy(() => import('@/Components/InputError'));
+const PrimaryButton = React.lazy(() => import('@/Components/PrimaryButton'));
+const TextInput = React.lazy(() => import('@/Components/TextInput'));
 
 export default function ForgotPassword({ status }) {
     const { data, setData, post, processing, errors } = useForm({

@@ -1,6 +1,8 @@
-import GuestLayout from '@/Layouts/GuestLayout';
-import PrimaryButton from '@/Components/PrimaryButton';
+import React from 'react';
 import { Head, Link, useForm } from '@inertiajs/react';
+
+const GuestLayout = React.lazy(() => import('@/Layouts/GuestLayout'));
+const PrimaryButton = React.lazy(() => import('@/Components/PrimaryButton'));
 
 export default function VerifyEmail({ status }) {
     const { post, processing } = useForm({});
