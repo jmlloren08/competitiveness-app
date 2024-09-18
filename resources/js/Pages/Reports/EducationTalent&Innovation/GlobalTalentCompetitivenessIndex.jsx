@@ -38,7 +38,7 @@ export default function GlobalTalentCompetitivenessIndex() {
 
     return (
         <>
-            <Head title="Competitiveness Dashboard - Reports/Digital/Global Talent Competitiveness Index" />
+            <Head title="Competitiveness Dashboard - Reports/Education Talent & Innovation/Global Talent Competitiveness Index" />
 
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">

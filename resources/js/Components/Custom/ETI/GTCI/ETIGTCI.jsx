@@ -3,10 +3,10 @@ import Chart from 'react-apexcharts';
 import axios from 'axios';
 
 export default function ETIGTCI() {
-    const [chartDataWDCR, setChartDataWDCR] = useState([]);
+    const [chartDataGTCI, setChartDataGTCI] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [loadingGII, setLoadingGII] = useState(true);
+    const [loadingGTCI, setLoadingGTCI] = useState(true);
 
     useEffect(() => {
         axios.get('/get-eti-gtci-view-the-ranking')
@@ -14,23 +14,23 @@ export default function ETIGTCI() {
                 const { years, countries, data } = response.data;
                 setYears(years.map(item => item.gtci_year));
                 setCountries(countries.map(item => item.gtci_country));
-                setChartDataWDCR(data);
-                setLoadingGII(false);
+                setChartDataGTCI(data);
+                setLoadingGTCI(false);
                 
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setLoadingGII(false);
+                setLoadingGTCI(false);
             });
     }, []);
 
-    if (loadingGII) {
+    if (loadingGTCI) {
         return <div>Please wait...</div>
     }
 
     const series = countries.map(country => ({
         name: country,
-        data: chartDataWDCR.filter(item => item.gtci_country === country).map(item => ({
+        data: chartDataGTCI.filter(item => item.gtci_country === country).map(item => ({
             x: item.gtci_year,
             y: item.gtci_count
         }))
@@ -91,7 +91,7 @@ export default function ETIGTCI() {
                                 <div key={year} className='mb-2'>
                                     <span className='font-semibold'>{`${year}: `}</span>
                                     <span>
-                                        {chartDataWDCR.find(item => item.gtci_country === country && item.gtci_year === year)?.gtci_count || 'NDA'}
+                                        {chartDataGTCI.find(item => item.gtci_country === country && item.gtci_year === year)?.gtci_count || 'NDA'}
                                     </span>
                                 </div>
                             ))}
@@ -122,7 +122,7 @@ export default function ETIGTCI() {
                                     <td className='p-2 text-center'>{country}</td>
                                     {years.map(year => (
                                         <td key={year} className='p-2 text-left sm:text-center'>
-                                            {chartDataWDCR.find(item => item.gtci_country === country && item.gtci_year === year)?.gtci_count || 'NDA'}
+                                            {chartDataGTCI.find(item => item.gtci_country === country && item.gtci_year === year)?.gtci_count || 'NDA'}
                                         </td>
                                     ))}
                                 </tr>

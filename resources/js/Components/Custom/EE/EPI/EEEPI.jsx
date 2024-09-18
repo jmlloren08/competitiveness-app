@@ -2,37 +2,36 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 import axios from 'axios';
 
-export default function ETIGII() {
-    const [chartDataGII, setChartDataGII] = useState([]);
+export default function EEEPI() {
+    const [chartDataEEEPI, setChartDataEEEPI] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [loadingGII, setLoadingGII] = useState(true);
+    const [loadingEEEPI, setLoadingEEEPI] = useState(true);
 
     useEffect(() => {
-        axios.get('/get-eti-gii-view-the-ranking')
+        axios.get('/get-ee-epi-view-the-ranking')
             .then(response => {
                 const { years, countries, data } = response.data;
-                setYears(years.map(item => item.gii_year));
-                setCountries(countries.map(item => item.gii_country));
-                setChartDataGII(data);
-                setLoadingGII(false);
-                
+                setYears(years.map(item => item.ee_epi_year));
+                setCountries(countries.map(item => item.ee_epi_country));
+                setChartDataEEEPI(data);
+                setLoadingEEEPI(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setLoadingGII(false);
+                setLoadingEEEPI(false);
             });
     }, []);
 
-    if (loadingGII) {
+    if (loadingEEEPI) {
         return <div>Please wait...</div>
     }
 
     const series = countries.map(country => ({
         name: country,
-        data: chartDataGII.filter(item => item.gii_country === country).map(item => ({
-            x: item.gii_year,
-            y: item.gii_count
+        data: chartDataEEEPI.filter(item => item.ee_epi_country === country).map(item => ({
+            x: item.ee_epi_year,
+            y: item.ee_epi_count
         }))
     }));
 
@@ -67,11 +66,12 @@ export default function ETIGII() {
         }
     }
 
-    const gii_economies = ['132 economies', '132 economies', '132 economies', '131 economies', '129 economies'];
+    const ee_epi_economies = ['NDA', 'NDA', 'NDA', 'NDA', 'NDA'];
 
     return (
         <div>
             <h2 className='text-white text-center font-bold bg-blue-900 p-3'>CHART</h2>
+
             <Chart
                 options={options}
                 series={series}
@@ -91,7 +91,7 @@ export default function ETIGII() {
                                 <div key={year} className='mb-2'>
                                     <span className='font-semibold'>{`${year}: `}</span>
                                     <span>
-                                        {chartDataGII.find(item => item.gii_country === country && item.gii_year === year)?.gii_count || 'NDA'}
+                                        {chartDataEEEPI.find(item => item.ee_epi_country === country && item.ee_epi_year === year)?.ee_epi_count || 'NDA'}
                                     </span>
                                 </div>
                             ))}
@@ -111,7 +111,7 @@ export default function ETIGII() {
                             </tr>
                             <tr>
                                 <th className='p-2 border md:border-gray-100'>Baseline No.</th>
-                                {gii_economies.map((economy, index) => (
+                                {ee_epi_economies.map((economy, index) => (
                                     <th className='p-2 border md:border-gray-100' key={index}>{economy}</th>
                                 ))}
                             </tr>
@@ -122,7 +122,7 @@ export default function ETIGII() {
                                     <td className='p-2 text-center'>{country}</td>
                                     {years.map(year => (
                                         <td key={year} className='p-2 text-left sm:text-center'>
-                                            {chartDataGII.find(item => item.gii_country === country && item.gii_year === year)?.gii_count || 'NDA'}
+                                            {chartDataEEEPI.find(item => item.ee_epi_country === country && item.ee_epi_year === year)?.ee_epi_count || 'NDA'}
                                         </td>
                                     ))}
                                 </tr>

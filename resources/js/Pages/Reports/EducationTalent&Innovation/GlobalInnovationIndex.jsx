@@ -38,7 +38,7 @@ export default function GlobalInnovationIndex() {
 
     return (
         <>
-            <Head title="Competitiveness Dashboard - Reports/Digital/Global Innovation Index" />
+            <Head title="Competitiveness Dashboard - Reports/Education Talent & Innovation/Global Innovation Index" />
 
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">

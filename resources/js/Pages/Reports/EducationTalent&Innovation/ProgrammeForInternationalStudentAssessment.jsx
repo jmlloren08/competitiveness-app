@@ -37,7 +37,7 @@ export default function ProgrammeForInternationalStudentAssessment() {
 
     return (
         <>
-            <Head title="Competitiveness Dashboard - Reports/ETI/Programme for International Student Assessment" />
+            <Head title="Competitiveness Dashboard - Reports/Education Talent & Innovation/Programme for International Student Assessment" />
 
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">

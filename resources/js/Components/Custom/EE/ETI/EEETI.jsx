@@ -2,37 +2,36 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 import axios from 'axios';
 
-export default function ETIGII() {
-    const [chartDataGII, setChartDataGII] = useState([]);
+export default function EEETI() {
+    const [chartDataEEETI, setChartDataEEETI] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [loadingGII, setLoadingGII] = useState(true);
+    const [loadingEEETI, setLoadingEEETI] = useState(true);
 
     useEffect(() => {
-        axios.get('/get-eti-gii-view-the-ranking')
+        axios.get('/get-ee-eti-view-the-ranking')
             .then(response => {
                 const { years, countries, data } = response.data;
-                setYears(years.map(item => item.gii_year));
-                setCountries(countries.map(item => item.gii_country));
-                setChartDataGII(data);
-                setLoadingGII(false);
-                
+                setYears(years.map(item => item.ee_eti_year));
+                setCountries(countries.map(item => item.ee_eti_country));
+                setChartDataEEETI(data);
+                setLoadingEEETI(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setLoadingGII(false);
+                setLoadingEEETI(false);
             });
     }, []);
 
-    if (loadingGII) {
+    if (loadingEEETI) {
         return <div>Please wait...</div>
     }
 
     const series = countries.map(country => ({
         name: country,
-        data: chartDataGII.filter(item => item.gii_country === country).map(item => ({
-            x: item.gii_year,
-            y: item.gii_count
+        data: chartDataEEETI.filter(item => item.ee_eti_country === country).map(item => ({
+            x: item.ee_eti_year,
+            y: item.ee_eti_count
         }))
     }));
 
@@ -67,7 +66,7 @@ export default function ETIGII() {
         }
     }
 
-    const gii_economies = ['132 economies', '132 economies', '132 economies', '131 economies', '129 economies'];
+    const ee_eti_economies = ['120 economies', 'NDA', '115 economies', '115 economies', '115 economies'];
 
     return (
         <div>
@@ -91,7 +90,7 @@ export default function ETIGII() {
                                 <div key={year} className='mb-2'>
                                     <span className='font-semibold'>{`${year}: `}</span>
                                     <span>
-                                        {chartDataGII.find(item => item.gii_country === country && item.gii_year === year)?.gii_count || 'NDA'}
+                                        {chartDataEEETI.find(item => item.ee_eti_country === country && item.ee_eti_year === year)?.ee_eti_count || 'NDA'}
                                     </span>
                                 </div>
                             ))}
@@ -111,7 +110,7 @@ export default function ETIGII() {
                             </tr>
                             <tr>
                                 <th className='p-2 border md:border-gray-100'>Baseline No.</th>
-                                {gii_economies.map((economy, index) => (
+                                {ee_eti_economies.map((economy, index) => (
                                     <th className='p-2 border md:border-gray-100' key={index}>{economy}</th>
                                 ))}
                             </tr>
@@ -122,7 +121,7 @@ export default function ETIGII() {
                                     <td className='p-2 text-center'>{country}</td>
                                     {years.map(year => (
                                         <td key={year} className='p-2 text-left sm:text-center'>
-                                            {chartDataGII.find(item => item.gii_country === country && item.gii_year === year)?.gii_count || 'NDA'}
+                                            {chartDataEEETI.find(item => item.ee_eti_country === country && item.ee_eti_year === year)?.ee_eti_count || 'NDA'}
                                         </td>
                                     ))}
                                 </tr>

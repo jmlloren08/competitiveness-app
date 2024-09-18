@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DigitalQualityOfLifeIndexController;
 use App\Http\Controllers\EGovernmentDevelopmentIndexController;
+use App\Http\Controllers\EnergyTransitionIndexController;
+use App\Http\Controllers\EnvironmentalPerformanceIndexController;
 use App\Http\Controllers\GlobalInnovationIndexController;
 use App\Http\Controllers\GlobalTalentCompetitivenessIndexController;
 use App\Http\Controllers\GovTechMaturityIndexController;
@@ -12,6 +14,7 @@ use App\Http\Controllers\PISAController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorldCompetitivenessRankingController;
 use App\Http\Controllers\WorldDigitalCompetitivenessRankingController;
+use App\Http\Controllers\WorldTalentRankingController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -118,15 +121,24 @@ Route::get('/get-eti-gtci-indicator-ranking', [GlobalTalentCompetitivenessIndexC
 Route::get('/reports/educationtalent&innovation/world-talent-ranking', function () {
     return Inertia::render('Reports/EducationTalent&Innovation/WorldTalentRanking');
 })->name('reports.educationtalent&innovation.wtr');
+Route::get('/get-eti-wtr-philippine-ranking', [WorldTalentRankingController::class, 'getETIWTRPhilippineRanking']);
+Route::get('/get-eti-wtr-view-the-ranking', [WorldTalentRankingController::class, 'getETIWTRViewTheRanking']);
+Route::get('/get-eti-wtr-indicator-ranking', [WorldTalentRankingController::class, 'getETIWTRIndicatorRanking']);
 
 // energy & environment
 Route::get('/reports/energy&environment/energy-transition-index', function () {
     return Inertia::render('Reports/Energy&Environment/EnergyTransitionIndex');
 })->name('reports.energy&environment.eti');
+Route::get('/get-ee-eti-philippine-ranking', [EnergyTransitionIndexController::class, 'getEEETIPhilippineRanking']);
+Route::get('/get-ee-eti-view-the-ranking', [EnergyTransitionIndexController::class, 'getEEETIViewTheRanking']);
+Route::get('/get-ee-eti-indicator-ranking', [EnergyTransitionIndexController::class, 'getEEETIIndicatorRanking']);
 
 Route::get('/reports/energy&environment/environmental-performance-index', function () {
     return Inertia::render('Reports/Energy&Environment/EnvironmentalPerformanceIndex');
 })->name('reports.energy&environment.epi');
+Route::get('/get-ee-epi-philippine-ranking', [EnvironmentalPerformanceIndexController::class, 'getEEEPIPhilippineRanking']);
+Route::get('/get-ee-epi-view-the-ranking', [EnvironmentalPerformanceIndexController::class, 'getEEEPIViewTheRanking']);
+Route::get('/get-ee-epi-indicator-ranking', [EnvironmentalPerformanceIndexController::class, 'getEEEPIIndicatorRanking']);
 
 // governance
 Route::get('/reports/governance/b-ready-doing-business-report', function () {

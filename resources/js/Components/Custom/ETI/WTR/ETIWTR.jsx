@@ -2,37 +2,36 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 import axios from 'axios';
 
-export default function ETIGII() {
-    const [chartDataGII, setChartDataGII] = useState([]);
+export default function ETIWTR() {
+    const [chartDataWTR, setChartDataWTR] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [loadingGII, setLoadingGII] = useState(true);
+    const [loadingWTR, setLoadingWTR] = useState(true);
 
     useEffect(() => {
-        axios.get('/get-eti-gii-view-the-ranking')
+        axios.get('/get-eti-wtr-view-the-ranking')
             .then(response => {
                 const { years, countries, data } = response.data;
-                setYears(years.map(item => item.gii_year));
-                setCountries(countries.map(item => item.gii_country));
-                setChartDataGII(data);
-                setLoadingGII(false);
-                
+                setYears(years.map(item => item.wtr_year));
+                setCountries(countries.map(item => item.wtr_country));
+                setChartDataWTR(data);
+                setLoadingWTR(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setLoadingGII(false);
+                setLoadingWTR(false);
             });
     }, []);
 
-    if (loadingGII) {
+    if (loadingWTR) {
         return <div>Please wait...</div>
     }
 
     const series = countries.map(country => ({
         name: country,
-        data: chartDataGII.filter(item => item.gii_country === country).map(item => ({
-            x: item.gii_year,
-            y: item.gii_count
+        data: chartDataWTR.filter(item => item.wtr_country === country).map(item => ({
+            x: item.wtr_year,
+            y: item.wtr_count
         }))
     }));
 
@@ -67,7 +66,7 @@ export default function ETIGII() {
         }
     }
 
-    const gii_economies = ['132 economies', '132 economies', '132 economies', '131 economies', '129 economies'];
+    const wtr_economies = ['134 economies', '133 economies', '134 economies', '132 economies', '125 economies'];
 
     return (
         <div>
@@ -91,7 +90,7 @@ export default function ETIGII() {
                                 <div key={year} className='mb-2'>
                                     <span className='font-semibold'>{`${year}: `}</span>
                                     <span>
-                                        {chartDataGII.find(item => item.gii_country === country && item.gii_year === year)?.gii_count || 'NDA'}
+                                        {chartDataWTR.find(item => item.wtr_country === country && item.wtr_year === year)?.wtr_count || 'NDA'}
                                     </span>
                                 </div>
                             ))}
@@ -111,7 +110,7 @@ export default function ETIGII() {
                             </tr>
                             <tr>
                                 <th className='p-2 border md:border-gray-100'>Baseline No.</th>
-                                {gii_economies.map((economy, index) => (
+                                {wtr_economies.map((economy, index) => (
                                     <th className='p-2 border md:border-gray-100' key={index}>{economy}</th>
                                 ))}
                             </tr>
@@ -122,7 +121,7 @@ export default function ETIGII() {
                                     <td className='p-2 text-center'>{country}</td>
                                     {years.map(year => (
                                         <td key={year} className='p-2 text-left sm:text-center'>
-                                            {chartDataGII.find(item => item.gii_country === country && item.gii_year === year)?.gii_count || 'NDA'}
+                                            {chartDataWTR.find(item => item.wtr_country === country && item.wtr_year === year)?.wtr_count || 'NDA'}
                                         </td>
                                     ))}
                                 </tr>
