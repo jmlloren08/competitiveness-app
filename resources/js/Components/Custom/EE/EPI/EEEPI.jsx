@@ -109,7 +109,7 @@ export default function EEEPI() {
                                     <th className='p-2 border md:border-gray-100' key={year}>{year}</th>
                                 ))}
                             </tr>
-                            <tr>
+                            <tr>=
                                 <th className='p-2 border md:border-gray-100'>Baseline No.</th>
                                 {ee_epi_economies.map((economy, index) => (
                                     <th className='p-2 border md:border-gray-100' key={index}>{economy}</th>

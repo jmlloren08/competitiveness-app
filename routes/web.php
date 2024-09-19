@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\BReadyDoingBusinessReportController;
+use App\Http\Controllers\CorruptionPerceptionsIndexController;
 use App\Http\Controllers\DigitalQualityOfLifeIndexController;
+use App\Http\Controllers\EconomicFreedomIndexController;
 use App\Http\Controllers\EGovernmentDevelopmentIndexController;
 use App\Http\Controllers\EnergyTransitionIndexController;
 use App\Http\Controllers\EnvironmentalPerformanceIndexController;
@@ -14,6 +17,7 @@ use App\Http\Controllers\PISAController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorldCompetitivenessRankingController;
 use App\Http\Controllers\WorldDigitalCompetitivenessRankingController;
+use App\Http\Controllers\WorldGovernanceIndicatorsController;
 use App\Http\Controllers\WorldTalentRankingController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -144,19 +148,22 @@ Route::get('/get-ee-epi-indicator-ranking', [EnvironmentalPerformanceIndexContro
 Route::get('/reports/governance/b-ready-doing-business-report', function () {
     return Inertia::render('Reports/Governance/BReadyDoingBusinessReport');
 })->name('reports.governance.brdbr');
+Route::get('/get-governance-brdbr-philippine-ranking', [BReadyDoingBusinessReportController::class, 'getGovernanceBrdbrPhilippineRankings']);
 
 Route::get('/reports/governance/corruption-perceptions-index', function () {
     return Inertia::render('Reports/Governance/CorruptionPerceptionsIndex');
 })->name('reports.governance.cpi');
+Route::get('/get-governance-cpi-philippine-ranking', [CorruptionPerceptionsIndexController::class, 'getGovernanceCPIPhilippineRanking']);
 
 Route::get('/reports/governance/economic-freedom-index', function () {
     return Inertia::render('Reports/Governance/EconomicFreedomIndex');
 })->name('reports.governance.efi');
+Route::get('/get-governance-efi-philippine-ranking', [EconomicFreedomIndexController::class, 'getGovernanceEFIPhilippineRanking']);
 
 Route::get('/reports/governance/worldwide-governance-indicators', function () {
     return Inertia::render('Reports/Governance/WorldwideGovernanceIndicators');
 })->name('reports.governance.wgi');
-
+Route::get('/get-governance-wgi-philippine-ranking', [WorldGovernanceIndicatorsController::class, 'getGovernanceWgiPhilipineRanking']);
 // health & nutrition
 Route::get('/reports/health&nutrition/global-health-security-index', function () {
     return Inertia::render('Reports/Health&Nutrition/GlobalHealthSecurityIndex');

@@ -28,7 +28,7 @@ export default function WorldCompetitivenessYearBook() {
             });
     }, []);
 
-    const gaugeLevel = data.gauge ? data.gauge.area_block : 'Bottom Third';
+    const gaugeLevel = data.gauge ? data.gauge.area_block : 'NDA';
     const latestYear = data.latestYear ? data.latestYear : 'NDA';
     const overallRank = data.overall.length ? data.overall[0].rank : 'NDA';
     const source = data.overall.length ? data.overall[0].source : 'NDA';

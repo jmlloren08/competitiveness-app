@@ -12,13 +12,15 @@ const Gauge = ({ gauge }) => {
     const gaugeLabels = {
         'Bottom Third': 'BOTTOM THIRD',
         'Middle Third': 'MIDDLE THIRD',
-        'Top Third': 'TOP THIRD'
+        'Top Third': 'TOP THIRD',
+        'NDA': 'NDA'
     }
 
     const gaugeAngles = {
         'Bottom Third': -60,
         'Middle Third': 0,
-        'Top Third': 60
+        'Top Third': 60,
+        'NDA': -100
     }
 
     const needleAngle = gaugeAngles[gauge];
@@ -73,7 +75,7 @@ const Gauge = ({ gauge }) => {
 }
 
 Gauge.propTypes = {
-    gauge: PropTypes.oneOf(['Bottom Third', 'Middle Third', 'Top Third']).isRequired
+    gauge: PropTypes.oneOf(['Bottom Third', 'Middle Third', 'Top Third', 'NDA']).isRequired
 }
 
 export default Gauge;
