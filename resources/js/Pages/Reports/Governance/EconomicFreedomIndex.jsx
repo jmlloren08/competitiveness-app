@@ -7,7 +7,7 @@ const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 const Gauge = React.lazy(() => import('@/Components/Gauge'));
 
-export default function CorruptionPerceptionsIndex() {
+export default function EconomicFreedomIndex() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [data, setData] = useState({
         gauge: null,

@@ -7,6 +7,8 @@ use App\Http\Controllers\EconomicFreedomIndexController;
 use App\Http\Controllers\EGovernmentDevelopmentIndexController;
 use App\Http\Controllers\EnergyTransitionIndexController;
 use App\Http\Controllers\EnvironmentalPerformanceIndexController;
+use App\Http\Controllers\GlobalHealthSecurityIndexController;
+use App\Http\Controllers\GlobalHungerIndexController;
 use App\Http\Controllers\GlobalInnovationIndexController;
 use App\Http\Controllers\GlobalTalentCompetitivenessIndexController;
 use App\Http\Controllers\GovTechMaturityIndexController;
@@ -168,10 +170,15 @@ Route::get('/get-governance-wgi-philippine-ranking', [WorldGovernanceIndicatorsC
 Route::get('/reports/health&nutrition/global-health-security-index', function () {
     return Inertia::render('Reports/Health&Nutrition/GlobalHealthSecurityIndex');
 })->name('reports.health&nutrition.ghsi');
+Route::get('/get-hn-ghsi-philippine-ranking', [GlobalHealthSecurityIndexController::class, 'getHNGHSIPhilippineRanking']);
+Route::get('/get-hn-ghsi-view-the-ranking', [GlobalHealthSecurityIndexController::class, 'getHNGHSIViewTheRanking']);
+Route::get('/get-hn-ghsi-indicator-ranking', [GlobalHealthSecurityIndexController::class, 'getHNGHSIIndicatorRanking']);
 
 Route::get('/reports/health&nutrition/global-hunger-index', function () {
     return Inertia::render('Reports/Health&Nutrition/GlobalHungerIndex');
 })->name('reports.health&nutrition.ghi');
+Route::get('/get-hn-ghi-philippine-ranking', [GlobalHungerIndexController::class, 'getHNGHIPhilippineRanking']);
+Route::get('/get-hn-ghi-view-the-ranking', [GlobalHungerIndexController::class, 'getHNGHIViewTheRanking']);
 
 // trade
 Route::get('/reports/trade/logistics-performance-index', function () {

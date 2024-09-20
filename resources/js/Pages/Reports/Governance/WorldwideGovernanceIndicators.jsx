@@ -7,7 +7,7 @@ const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 const Gauge = React.lazy(() => import('@/Components/Gauge'));
 
-export default function CorruptionPerceptionsIndex() {
+export default function WorldwideGovernanceIndicators() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [data, setData] = useState({
         gauge: null,
@@ -17,7 +17,7 @@ export default function CorruptionPerceptionsIndex() {
     });
 
     useEffect(() => {
-        axios.get('/get-governance-efi-philippine-ranking')
+        axios.get('/get-governance-wgi-philippine-ranking')
             .then(response => {
                 setData(response.data);
             })
@@ -133,6 +133,26 @@ export default function CorruptionPerceptionsIndex() {
                                 <div>
                                     <Gauge gauge={gaugeLevel} />
                                 </div>
+                            </div>
+
+                            <div className='mt-12 mb-12'>
+                                <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>ABOUT THE REPORT</h2>
+                                <p className='p-3'>The Worldwide Governance Indicators (WGI) is a global compilation of data capturing household, business, and citizen perceptions of the quality of governance in more than 200 countries and territories since 1996. The WGI covers six broad dimensions of governance:</p>
+                                <p className='p-3'>(1) Voice and Accountability – captures perceptions of the extent to which a country’s citizens are able to participate in selecting their government, as well as freedom of expression, freedom of association, and a free media.</p>
+                                <p className='p-3'>(2) Political Stability and Absence of Violence/Terrorism – measures perceptions of the likelihood of political instability and/or politically motivated violence, including terrorism.</p>
+                                <p className='p-3'>(3) Government Effectiveness – captures perceptions of the quality of public services, the quality of the civil service and the degree of its independence from political pressures, the quality of policy formulation and implementation, and the credibility of the government’s commitment to such policies.</p>
+                                <p className='p-3'>(4) Regulatory Quality – captures perceptions of the ability of the government to formulate and implement sound policies and regulations that permit and promote private sector development.</p>
+                                <p className='p-3'>(5) Rule of Law – captures perceptions of the extent to which agents have confidence in and abide by the rules of society, and in particular the quality of contract enforcement, property rights, the police, and the courts, as well as the likelihood of crime and violence.</p>
+                                <p className='p-3'>(6) Control of Corruption – captures perceptions of the extent to which public power is exercised for private gain, including both petty and grand forms of corruption, as well as “capture” of the state by elites and private interests.</p>
+                            </div>
+
+                            <div className='mt-12 mb-12'>
+                                <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>DOWNLOAD THE WORLD GOVERNANCE INDICATORS</h2>
+                                <p className='p-2 font-bold text-lg underline'>
+                                    <a href="https://www.worldbank.org/en/publication/worldwide-governance-indicators/interactive-data-access" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                        2018-2022 World Governance Indicators
+                                    </a>
+                                </p>
                             </div>
 
                         </div>
