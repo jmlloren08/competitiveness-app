@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gcr_hn_ghi_philippine_rankings', function (Blueprint $table) {
+        Schema::create('gcr_trade_lpi_philippine_rankings', function (Blueprint $table) {
             $table->id();
             $table->string('report_name');
             $table->string('source');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gcr_hn_ghi_philippine_rankings');
+        Schema::dropIfExists('gcr_trade_lpi_philippine_rankings');
     }
 };

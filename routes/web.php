@@ -13,6 +13,7 @@ use App\Http\Controllers\GlobalInnovationIndexController;
 use App\Http\Controllers\GlobalTalentCompetitivenessIndexController;
 use App\Http\Controllers\GovTechMaturityIndexController;
 use App\Http\Controllers\ICTDevelopmentIndexController;
+use App\Http\Controllers\LogisticsPerformanceIndexController;
 use App\Http\Controllers\NetworkReadinessIndexController;
 use App\Http\Controllers\PhilippinesReportsRankingController;
 use App\Http\Controllers\PISAController;
@@ -184,6 +185,9 @@ Route::get('/get-hn-ghi-view-the-ranking', [GlobalHungerIndexController::class, 
 Route::get('/reports/trade/logistics-performance-index', function () {
     return Inertia::render('Reports/Trade/LogisticsPerformanceIndex');
 })->name('reports.trade.lpi');
+Route::get('/get-trade-lpi-philippine-ranking', [LogisticsPerformanceIndexController::class, 'getTradeLPIPhilippineRanking']);
+Route::get('/get-trade-lpi-view-the-ranking', [LogisticsPerformanceIndexController::class, 'getTradeLPIViewTheRanking']);
+Route::get('/get-trade-lpi-indicator-ranking', [LogisticsPerformanceIndexController::class, 'getTradeLPIIndicatorRanking']);
 
 // fetch data for chart and table to homepage
 Route::get('/phils-reports-ranking', [PhilippinesReportsRankingController::class, 'getPhilippinesReportsRanking']);
