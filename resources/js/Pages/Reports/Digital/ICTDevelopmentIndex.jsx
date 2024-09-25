@@ -173,11 +173,13 @@ export default function ICTDevelopmentIndex() {
                     </section>
 
                     <div className='flex justify-center m-12'>
-                        <button
-                            className='mt-4 bg-gray-800 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 text-white font-bold py-2 px-4 rounded-lg'
-                        >
-                            <Link href={route('reports')}>Back to Main Menu</Link>
-                        </button>
+                        <Link href={route('reports')}>
+                            <button
+                                className='mt-4 bg-gray-800 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 text-white font-bold py-2 px-4 rounded-lg'
+                            >
+                                Back to Main Menu
+                            </button>
+                        </Link>
                     </div>
 
                 </main>
