@@ -54,9 +54,12 @@ class WorldTalentRankingController extends Controller
     {
         try {
 
+            // $maxYear = GcrEtiWtrIndicatorRankings::max('years');
+            // $minYear = GcrEtiWtrIndicatorRankings::min('years');
+
             $data = [];
 
-            for ($year = 2019; $year <= 2023; $year++) {
+            for ($year = 2019; $year <= 2024; $year++) {
                 $data[$year] = GcrEtiWtrIndicatorRankings::select('indicator_ranking', 'years', 'country', 'counts')
                     ->where('years', $year)
                     ->orderBy('country_id')

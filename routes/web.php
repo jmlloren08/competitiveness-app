@@ -153,20 +153,54 @@ Route::get('/reports/governance/b-ready-doing-business-report', function () {
 })->name('reports.governance.brdbr');
 Route::get('/get-governance-brdbr-philippine-ranking', [BReadyDoingBusinessReportController::class, 'getGovernanceBrdbrPhilippineRankings']);
 
+// governance/corruption/perceptions
 Route::get('/reports/governance/corruption-perceptions-index', function () {
     return Inertia::render('Reports/Governance/CorruptionPerceptionsIndex');
 })->name('reports.governance.cpi');
 Route::get('/get-governance-cpi-philippine-ranking', [CorruptionPerceptionsIndexController::class, 'getGovernanceCPIPhilippineRanking']);
 
+// governance/wgi/Economic Freedom
 Route::get('/reports/governance/economic-freedom-index', function () {
     return Inertia::render('Reports/Governance/EconomicFreedomIndex');
 })->name('reports.governance.efi');
 Route::get('/get-governance-efi-philippine-ranking', [EconomicFreedomIndexController::class, 'getGovernanceEFIPhilippineRanking']);
 
-Route::get('/reports/governance/worldwide-governance-indicators', function () {
-    return Inertia::render('Reports/Governance/WorldwideGovernanceIndicators');
-})->name('reports.governance.wgi');
-Route::get('/get-governance-wgi-philippine-ranking', [WorldGovernanceIndicatorsController::class, 'getGovernanceWgiPhilipineRanking']);
+// governance/wgi/Voice and Accountability
+Route::get('/reports/governance/worldwide-governance-indicators/voice-and-accountability', function () {
+    return Inertia::render('Reports/Governance/WGI/WGIVoiceAndAccountability');
+})->name('reports.governance.voiceandaccountability');
+Route::get('/get-governance-wgi-voice-and-accountability-philippine-ranking', [WorldGovernanceIndicatorsController::class, 'getGovernanceWgiVoiceAndAccountabilityPhilipineRanking']);
+
+// governance/wgi/Political Stability and Absence of Violence/Terrorism
+Route::get('/reports/governance/worldwide-governance-indicators/political-stability-and-absence-of-violence/terrorism', function () {
+    return Inertia::render('Reports/Governance/WGI/WGIPsavt');
+})->name('reports.governance.psavt');
+Route::get('/get-governance-wgi-psavt-philippine-ranking', [WorldGovernanceIndicatorsController::class, 'getGovernanceWgiPSAVTPhilipineRanking']);
+
+// governance/wgi/Government Effectivenes
+Route::get('/reports/governance/worldwide-governance-indicators/government-effectiveness', function () {
+    return Inertia::render('Reports/Governance/WGI/WGIGovernmentEffectiveness');
+})->name('reports.governance.governmenteffectiveness');
+Route::get('/get-governance-wgi-government-effectiveness-philippine-ranking', [WorldGovernanceIndicatorsController::class, 'getGovernanceWgiGovernmentEffectivenessPhilipineRanking']);
+
+// governance/wgi/Regulatory Quality
+Route::get('/reports/governance/worldwide-governance-indicators/regulatory-quality', function () {
+    return Inertia::render('Reports/Governance/WGI/WGIRegulatoryQuality');
+})->name('reports.governance.regulatoryquality');
+Route::get('/get-governance-wgi-regulatory-quality-philippine-ranking', [WorldGovernanceIndicatorsController::class, 'getGovernanceWgiRegulatoryQualityPhilipineRanking']);
+
+// governance/wgi/Rule of Law
+Route::get('/reports/governance/worldwide-governance-indicators/rule-of-law', function () {
+    return Inertia::render('Reports/Governance/WGI/WGIRuleOfLaw');
+})->name('reports.governance.ruleoflaw');
+Route::get('/get-governance-wgi-rule-of-law-philippine-ranking', [WorldGovernanceIndicatorsController::class, 'getGovernanceWgiRuleOfLawPhilipineRanking']);
+
+// governance/wgi/Control of Corruption
+Route::get('/reports/governance/worldwide-governance-indicators/control-of-corruption', function () {
+    return Inertia::render('Reports/Governance/WGI/WGIControlOfCorruption');
+})->name('reports.governance.controlofcorruption');
+Route::get('/get-governance-wgi-control-of-corruption-philippine-ranking', [WorldGovernanceIndicatorsController::class, 'getGovernanceWgiControlOfCorruptionPhilipineRanking']);
+
 // health & nutrition
 Route::get('/reports/health&nutrition/global-health-security-index', function () {
     return Inertia::render('Reports/Health&Nutrition/GlobalHealthSecurityIndex');
@@ -175,13 +209,14 @@ Route::get('/get-hn-ghsi-philippine-ranking', [GlobalHealthSecurityIndexControll
 Route::get('/get-hn-ghsi-view-the-ranking', [GlobalHealthSecurityIndexController::class, 'getHNGHSIViewTheRanking']);
 Route::get('/get-hn-ghsi-indicator-ranking', [GlobalHealthSecurityIndexController::class, 'getHNGHSIIndicatorRanking']);
 
+// health & nutrition/global hunger index
 Route::get('/reports/health&nutrition/global-hunger-index', function () {
     return Inertia::render('Reports/Health&Nutrition/GlobalHungerIndex');
 })->name('reports.health&nutrition.ghi');
 Route::get('/get-hn-ghi-philippine-ranking', [GlobalHungerIndexController::class, 'getHNGHIPhilippineRanking']);
 Route::get('/get-hn-ghi-view-the-ranking', [GlobalHungerIndexController::class, 'getHNGHIViewTheRanking']);
 
-// trade
+// trade / logistics performance index
 Route::get('/reports/trade/logistics-performance-index', function () {
     return Inertia::render('Reports/Trade/LogisticsPerformanceIndex');
 })->name('reports.trade.lpi');

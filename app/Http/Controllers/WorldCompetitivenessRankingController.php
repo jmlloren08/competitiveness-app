@@ -52,12 +52,16 @@ class WorldCompetitivenessRankingController extends Controller
     {
         try {
 
+            // $maxYear = GcrGeneralWcyIrPhVsAseanss::max('years');
+            // $minYear = GcrGeneralWcyIrPhVsAseanss::max('years');
+
             $data = [];
 
-            for ($year = 2019; $year <= 2023; $year++) {
+            for ($year = 2019; $year <= 2024; $year++) {
                 $data[$year] = GcrGeneralWcyIrPhVsAseanss::select('indicator_ranking', 'years', 'country', 'counts')
                     ->where('years', $year)
                     ->orderBy('country_id')
+                    ->orderBy('id')
                     ->get();
             }
 

@@ -8,6 +8,7 @@ const Footer = React.lazy(() => import('@/Components/Footer'));
 export default function ReportPage() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [selectedMenu, setSelectedMenu] = useState('');
+    const [selectedSubMenu, setSelectedSubMenu] = useState('');
 
     const menuItems = [
         {
@@ -114,9 +115,39 @@ export default function ReportPage() {
                     route: 'reports.governance.efi'
                 },
                 {
-                    name: 'Worldwide Governance Indicators',
-                    icon: '/backend/assets/images/icon-wgi.png',
-                    route: 'reports.governance.wgi'
+                    name: 'Worldwide Governance Indicators', icon: '/backend/assets/images/icon-wgi.png',
+                    subsubMenu: [
+                        {
+                            name: ' WGI - Voice and Accountability',
+                            icon: '/backend/assets/images/icon-va.png',
+                            route: 'reports.governance.voiceandaccountability'
+                        },
+                        {
+                            name: ' WGI - Political Stability and Absence of Violence/Terrorism',
+                            icon: '/backend/assets/images/icon-psavt.png',
+                            route: 'reports.governance.psavt'
+                        },
+                        {
+                            name: 'WGI - Government Effectiveness',
+                            icon: '/backend/assets/images/icon-ge.png',
+                            route: 'reports.governance.governmenteffectiveness'
+                        },
+                        {
+                            name: 'WGI - Regulatory Quality',
+                            icon: '/backend/assets/images/icon-rq.png',
+                            route: 'reports.governance.regulatoryquality'
+                        },
+                        {
+                            name: 'WGI - Rule of Law',
+                            icon: '/backend/assets/images/icon-rl.png',
+                            route: 'reports.governance.ruleoflaw'
+                        },
+                        {
+                            name: 'WGI - Control of Corruption',
+                            icon: '/backend/assets/images/icon-cc.png',
+                            route: 'reports.governance.controlofcorruption'
+                        }
+                    ]
                 }
             ]
         },
@@ -149,13 +180,23 @@ export default function ReportPage() {
 
     const handleMenuClick = (menu) => {
         setSelectedMenu(menu);
+        setSelectedSubMenu(''); //reset the submenu on new menu click
+    }
+
+    const handleSubMenuClick = (subMenu) => {
+        setSelectedSubMenu(subMenu); //set the submenu when clicked
     }
 
     const handleBackClick = () => {
-        setSelectedMenu('');
+        if (selectedSubMenu) {
+            setSelectedSubMenu(''); //go back to main submenu if already in a submenu
+        } else {
+            setSelectedMenu(''); //go back to main menu
+        }
     }
 
     const selectedMenuItem = menuItems.find(item => item.name === selectedMenu);
+    const selectedSubMenuItem = selectedMenuItem?.subMenu?.find(sub => sub.name === selectedSubMenu);
 
     return (
         <>
@@ -256,7 +297,7 @@ export default function ReportPage() {
                                     </div>
                                 ))}
                             </div>
-                        ) : (
+                        ) : !selectedSubMenu ? (
                             <div className="mb-6 bg-gradient-to-r from-blue-950 to-blue-900 text-white font-bold py-4 px-6 rounded-lg">
                                 <div className="mb-4">
                                     <img
@@ -278,7 +319,15 @@ export default function ReportPage() {
                                                     style={{ filter: 'invert(100%)' }}
                                                 />
                                             </div>
-                                            <div className="no-underline hover:underline text-lg mx-3 flex items-center"><Link href={route(`${subItem.route}`)}>{subItem.name}</Link></div>
+                                            <div className="no-underline hover:underline text-lg mx-3 flex items-center">
+                                                {subItem.subsubMenu ? (
+                                                    <button onClick={() => handleSubMenuClick(subItem.name)}>
+                                                        {subItem.name}
+                                                    </button>
+                                                ) : (
+                                                    <Link href={route(`${subItem.route}`)}>{subItem.name}</Link>
+                                                )}
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
@@ -289,6 +338,47 @@ export default function ReportPage() {
                                     Back to Main Menu
                                 </button>
                             </div>
+                        ) : (
+                            <div className="mb-6 bg-gradient-to-r from-blue-950 to-blue-900 text-white font-bold py-4 px-6 rounded-lg">
+                                <div className="mb-4">
+                                    <img
+                                        src={selectedMenuItem.icon}
+                                        alt={`${selectedSubMenu} Icon`}
+                                        className='h-16 mx-auto'
+                                        style={{ filter: 'invert(100%)' }}
+                                    />
+                                </div>
+                                <h2 className="text-2xl font-bold mb-4">{selectedSubMenu}</h2>
+                                <div className="grid grid-rows-1 sm:grid-rows-auto gap-4 flex items-center justify-center">
+                                    {selectedSubMenuItem.subsubMenu.map((subsubItem, subsubIndex) => (
+                                        <div key={subsubIndex} className="no-bg hover:bg-black transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 text-white font-bold py-2 px-4 rounded-lg flex items-center">
+                                            <div>
+                                                <img
+                                                    src={subsubItem.icon}
+                                                    alt={`${subsubItem.name} Icon`}
+                                                    className='h-12 mx-auto'
+                                                    style={{ filter: 'invert(100%)' }}
+                                                />
+                                            </div>
+                                            <div className="no-underline hover:underline text-lg mx-3 flex items-center">
+                                                {subsubItem.subsubMenu ? (
+                                                    <button onClick={() => handleSubMenuClick(subsubItem.name)}>
+                                                        {subsubItem.name}
+                                                    </button>
+                                                ) : (
+                                                    <Link href={route(`${subsubItem.route}`)}>{subsubItem.name}</Link>
+                                                )}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <button
+                                    className='mt-4 bg-gray-800 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 text-white font-bold py-2 px-4 rounded-lg'
+                                    onClick={handleBackClick}
+                                >
+                                    Back to Sub Menu
+                                </button>
+                            </div>
                         )}
                     </section>
 
@@ -296,7 +386,7 @@ export default function ReportPage() {
 
                 <Footer />
 
-            </div>
+            </div >
 
         </>
     );

@@ -8,8 +8,8 @@ export default function IndicatorRankingWCR() {
         categories: []
     });
 
-    const [selectedYear, setSelectedYear] = useState('2023');
-    const availableYears = ['2023', '2022', '2021', '2020', '2019'];
+    const [selectedYear, setSelectedYear] = useState('2024');
+    const availableYears = ['2024', '2023', '2022', '2021', '2020', '2019'];
 
     useEffect(() => {
         fetchChartData();

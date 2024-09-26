@@ -67,7 +67,7 @@ export default function WorldCompetitivenessRanking() {
         }
     }
 
-    const wcy_economies = ['63 economies', '63 economies', '64 economies', '63 economies', '64 economies'];
+    const wcy_economies = ['63 economies', '63 economies', '64 economies', '63 economies', '64 economies', '67 economies'];
 
     return (
         <div>

@@ -66,7 +66,7 @@ export default function ETIWTR() {
         }
     }
 
-    const wtr_economies = ['134 economies', '133 economies', '134 economies', '132 economies', '125 economies'];
+    const wtr_economies = ['63 economies', '63 economies', '64 economies', '63 economies', '64 economies', '67 economies'];
 
     return (
         <div>

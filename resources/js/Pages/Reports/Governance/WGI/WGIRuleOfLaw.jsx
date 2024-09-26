@@ -7,7 +7,7 @@ const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 const Gauge = React.lazy(() => import('@/Components/Gauge'));
 
-export default function WorldwideGovernanceIndicators() {
+export default function WGIRuleOfLaw() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [data, setData] = useState({
         gauge: null,
@@ -17,7 +17,7 @@ export default function WorldwideGovernanceIndicators() {
     });
 
     useEffect(() => {
-        axios.get('/get-governance-wgi-philippine-ranking')
+        axios.get('/get-governance-wgi-rule-of-law-philippine-ranking')
             .then(response => {
                 setData(response.data);
             })
@@ -36,7 +36,7 @@ export default function WorldwideGovernanceIndicators() {
 
     return (
         <>
-            <Head title="Competitiveness Dashboard - Reports/Governance/Worldwide Governance Indicators" />
+            <Head title="Competitiveness Dashboard - Reports/Governance/Worldwide Governance Indicators/Rule of Law" />
 
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">
@@ -101,7 +101,7 @@ export default function WorldwideGovernanceIndicators() {
                             <div className='absolute inset-0 bg-gradient-to-b from-transparent to-gray-900 opacity-75 rounded-xl'></div>
                             <div className='absolute inset-0 flex items-center justify-center'>
                                 <div className='text-center text-white'>
-                                    <h1 className='text-2xl sm:text-6xl mx-12 sm:m-4 font-bold'>WORLDWIDE GOVERNANCE INDICATORS</h1>
+                                    <h1 className='text-2xl sm:text-6xl mx-12 sm:m-4 font-bold'>WGI - RULE OF LAW</h1>
                                 </div>
                             </div>
                         </div>
