@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
+import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
@@ -156,12 +157,12 @@ export default function GovTechMaturityIndex() {
                                 <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>DOWNLOAD THE GOVTECH MATURITY INDEX</h2>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://www.worldbank.org/en/data/interactive/2022/10/21/govtech-maturity-index-gtmi-data-dashboard" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    2022 GovTech Maturity Index
+                                        2022 GovTech Maturity Index
                                     </a>
                                 </p>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://www.worldbank.org/en/data/interactive/2022/10/21/govtech-maturity-index-gtmi-data-dashboard" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    2020 GovTech Maturity Index
+                                        2020 GovTech Maturity Index
                                     </a>
                                 </p>
                             </div>
@@ -183,6 +184,8 @@ export default function GovTechMaturityIndex() {
                 </main>
 
                 <Footer />
+
+                <ScrollToTopButton />
 
             </div>
 

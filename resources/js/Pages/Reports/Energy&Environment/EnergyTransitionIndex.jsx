@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
+import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
@@ -162,8 +163,8 @@ export default function EnergyTransitionIndex() {
                             <div className='mt-12 mb-12'>
                                 <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>NEWS ARTICLES</h2>
                                 <p className='p-2 font-bold text-lg underline'>
-                                    <a href="https://www.philstar.com/business/2023/09/23/2298266/philippines-drops-world-talent-rankings" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    Managing the energy trilemma in the Philippines
+                                    <a href="https://energsustainsoc.biomedcentral.com/articles/10.1186/s13705-021-00309-1" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                        Managing the energy trilemma in the Philippines
                                     </a>
                                 </p>
                             </div>
@@ -214,6 +215,8 @@ export default function EnergyTransitionIndex() {
                 </main>
 
                 <Footer />
+
+                <ScrollToTopButton />
 
             </div>
 

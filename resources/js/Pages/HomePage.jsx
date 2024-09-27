@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Head } from '@inertiajs/react';
+import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const Header = React.lazy(() => import('@/Components/Header'));
@@ -7,13 +8,17 @@ const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 const PartnerLogos = React.lazy(() => import('@/Components/PartnerLogos'));
 const PhilippinesReportsRanking = React.lazy(() => import('@/Components/PhilippinesReportsRanking'));
+const Confetti = React.lazy(() => import('@/Components/Confetti'));
 
 export default function HomePage() {
+
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-        
+
     return (
         <>
             <Head title="Competitiveness Dashboard" />
+
+            <Confetti />
 
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">
@@ -112,6 +117,8 @@ export default function HomePage() {
                 </main>
 
                 <Footer />
+
+                <ScrollToTopButton />
 
             </div>
         </>

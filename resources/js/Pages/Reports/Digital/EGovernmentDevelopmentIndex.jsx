@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
+import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
@@ -214,6 +215,8 @@ export default function EGovernmentDevelopmentIndex() {
                 </main>
 
                 <Footer />
+
+                <ScrollToTopButton />
 
             </div>
 

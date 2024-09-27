@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
+import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
@@ -162,17 +163,17 @@ export default function WorldDigitalCompetitivenessRanking() {
                             <div className='mt-12 mb-12'>
                                 <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>NEWS ARTICLES</h2>
                                 <p className='p-2 font-bold text-lg underline'>
-                                    <a href="https://www.gmanetwork.com/news/money/economy/873439/philippines-falls-to-52nd-spot-in-world-competitiveness-ranking/story/" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                    <a href="https://business.inquirer.net/434450/ph-slips-3-places-in-digital-competitiveness-ranking" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
                                         PH falls 59th spot in digital competitiveness ranking
                                     </a>
                                 </p>
                                 <p className='p-2 font-bold text-lg underline'>
-                                    <a href="https://business.inquirer.net/434450/ph-slips-3-places-in-digital-competitiveness-ranking" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                    <a href="https://businessmirror.com.ph/2023/12/01/phl-slips-in-2023-world-digital-competitiveness-ranking/" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
                                         PH slips 3 places in digital competitiveness ranking
                                     </a>
                                 </p>
                                 <p className='p-2 font-bold text-lg underline'>
-                                    <a href="https://businessmirror.com.ph/2023/12/01/phl-slips-in-2023-world-digital-competitiveness-ranking/" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
+                                    <a href="https://www.gmanetwork.com/news/money/economy/873439/philippines-falls-to-52nd-spot-in-world-competitiveness-ranking/story/" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
                                         Philippines falls to 52nd spot in world competitiveness ranking
                                     </a>
                                 </p>
@@ -224,6 +225,8 @@ export default function WorldDigitalCompetitivenessRanking() {
                 </main>
 
                 <Footer />
+
+                <ScrollToTopButton />
 
             </div>
 

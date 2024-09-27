@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Head } from '@inertiajs/react';
+import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
@@ -145,6 +146,8 @@ export default function ContactUsPage() {
                 </main>
 
                 <Footer />
+
+                <ScrollToTopButton />
 
             </div>
 
