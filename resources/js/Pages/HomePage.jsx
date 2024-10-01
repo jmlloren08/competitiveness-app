@@ -94,7 +94,7 @@ export default function HomePage() {
 
                     <section className='mb-3'>
                         <div className='max-w-6xl mx-auto shadow-lg p-6 rounded'>
-                            <h2 className='text-white text-2xl font-bold mb-4 bg-sky-900 p-5 rounded'>ABOUT THE DASHBOARD</h2>
+                            <h2 className='text-white text-2xl font-bold mb-4 bg-sky-900 p-5 rounded'>ABOUT THE DASHBOARD (This is a test)</h2>
                             <p className='p-3'>
                                 The Philippine Global Competitiveness Report Card, developed by the Anti-Red Tape Authority (ARTA), AIM-Rizalino S. Navarro Policy Center for Competitiveness (RSNPCC), and Liveable Cities Philippines contains the compilation of a comprehensive list of 20 global competitiveness reports categorized into seven sectors: General, Digital, Education, Talent and Innovation, Energy and Environment, Governance, and Health and Nutrition.
                             </p>
