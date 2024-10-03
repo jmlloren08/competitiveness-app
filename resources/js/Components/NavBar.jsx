@@ -17,7 +17,7 @@ export default function NavBar() {
                     className='h-16'
                 />
             </Link>
-
+            {/* Desktop Menu */}
             <div className="hidden space-x-4 ml-10 sm:flex">
                 <NavLink href={route('/')} active={currentRoute === '/'}>
                     Home
@@ -37,10 +37,27 @@ export default function NavBar() {
             </div>
 
             <div className='hidden space-x-1 ml-5 sm:flex'>
-                {/* <img src="/backend/assets/images/logo-arta.png" alt="Arta Logo" className='h-16' /> */}
-                <img src="/backend/assets/images/logo-dti.png" alt="DTI Logo" className='h-16' />
-                <img src="/backend/assets/images/logo-aim.png" alt="AIM Logo" className='h-16' />
-                <img src="/backend/assets/images/logo-lcp.png" alt="LCP Logo" className='h-16' />
+                <a href="https://www.dti.gov.ph/" target='_blank' rel='noopener noreferrer' className='scale-90 hover:scale-100 transition-transform duration-300'>
+                    <img
+                        src="/backend/assets/images/logo-dti.png"
+                        alt="DTI Logo"
+                        className='h-16'
+                    />
+                </a>
+                <a href="https://aim.edu/" target='_blank' rel='noopener noreferrer' className='scale-90 hover:scale-100 transition-transform duration-300'>
+                    <img
+                        src="/backend/assets/images/logo-aim.png"
+                        alt="AIM Logo"
+                        className='h-16'
+                    />
+                </a>
+                <a href="https://liveablecities.ph/" target='_blank' rel='noopener noreferrer' className='scale-90 hover:scale-100 transition-transform duration-300'>
+                    <img
+                        src="/backend/assets/images/logo-lcp.png"
+                        alt="LCP Logo"
+                        className='h-16'
+                    />
+                </a>
             </div>
 
         </div>

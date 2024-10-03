@@ -17,16 +17,13 @@ export default function HomePage() {
     return (
         <>
             <Head title="Competitiveness Dashboard" />
-
             <Confetti />
-
+            {/* Navigation */}
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between items-center h-24">
-
                             <NavBar />
-
                             <div className="-mr-2 flex items-center sm:hidden">
                                 <button
                                     onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
@@ -52,46 +49,41 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
-
+                    {/* Dropdown for mobile */}
                     <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
                         <div className="pt-2 pb-3 space-y-1">
                             <ResponsiveNavLink href={route('/')} active={route().current('/')}>
                                 Home
                             </ResponsiveNavLink>
                         </div>
-
                         <div className="pt-4 pb-1 border-t border-gray-200">
-
                             <div className="px-4">
                                 {/* <div className="font-medium text-base text-gray-800">{user.name}</div>
                             <div className="font-medium text-sm text-gray-500">{user.email}</div> */}
                             </div>
-
                             <div className="mt-3 space-y-1">
                                 <ResponsiveNavLink href={route('about')}>About</ResponsiveNavLink>
                                 <ResponsiveNavLink href={route('reports')}>Reports</ResponsiveNavLink>
                                 <ResponsiveNavLink href={route('news')}>News</ResponsiveNavLink>
                                 <ResponsiveNavLink href={route('contact-us')}>Contact Us</ResponsiveNavLink>
                             </div>
-
                         </div>
                     </div>
                 </nav>
-
                 <Header />
-
-                <div className='max-w-6xl bg-white shadow-sm mx-auto py-6 px-4 sm:px-6 lg:px-8 -mt-5 sm:-mt-24 relative z-0 rounded-none sm:rounded-full' style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1)' }}>
+                {/* Partner Logos Section */}
+                <div className='max-w-6xl bg-white shadow-sm mx-auto py-6 px-4 sm:px-6 lg:px-8 -mt-5 sm:-mt-24 relative z-0 rounded-none sm:rounded-full'
+                    style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1)' }}>
                     <div className='max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between relative'>
-                        <div className='items-center mb-4 sm:mb-0 sm:flex hidden'>
-                            <span className='text-lg font-semi-bold mr-4'>Organized by:</span>
-                            <img src="/backend/assets/images/logo-arta.png" alt="ARTA Logo" className='h-16' />
+                        <div className='flex flex-col sm:flex-row items-center mb-4 sm:mb-0'>
+                            <span className='text-lg font-semi-bold mr-4 ml-4'>Organized by:</span>
+                            <img src="/backend/assets/images/logo-arta.png" alt="ARTA Logo" className='h-16 sm:h-10 md:h-16' />
                         </div>
                         <PartnerLogos />
                     </div>
                 </div>
-
+                {/* Main Content */}
                 <main className='bg-white mx-auto py-6 px-4 sm:px-6 lg:px-8 mt-6 mb-6'>
-
                     <section className='mb-3'>
                         <div className='max-w-6xl mx-auto shadow-lg p-6 rounded'>
                             <h2 className='text-white text-2xl font-bold mb-4 bg-sky-900 p-5 rounded'>ABOUT THE DASHBOARD</h2>
@@ -106,20 +98,15 @@ export default function HomePage() {
                             </p>
                         </div>
                     </section>
-
                     <div className='max-w-6xl mx-auto shadow-lg p-6 rounded'>
                         <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>PHILIPPINES REPORTS RANKING</h2>
                         <h2 className='text-white text-center font-bold bg-blue-900 p-3 mb-6'>CHART</h2>
                         <PhilippinesReportsRanking />
 
                     </div>
-
                 </main>
-
                 <Footer />
-
                 <ScrollToTopButton />
-
             </div>
         </>
     );

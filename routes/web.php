@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BReadyDoingBusinessReportController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CorruptionPerceptionsIndexController;
 use App\Http\Controllers\DigitalQualityOfLifeIndexController;
 use App\Http\Controllers\EconomicFreedomIndexController;
@@ -44,6 +45,7 @@ Route::get('/news', function () {
 Route::get('/contact-us', function () {
     return Inertia::render('ContactUsPage');
 })->name('contact-us');
+Route::post('/contact-us', [ContactUsController::class, 'store']);
 
 // generate reports
 // general/wcy

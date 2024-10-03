@@ -243,10 +243,7 @@ export default function ReportPage() {
 
                         <div className="pt-4 pb-1 border-t border-gray-200">
 
-                            <div className="px-4">
-                                {/* <div className="font-medium text-base text-gray-800">{user.name}</div>
-                            <div className="font-medium text-sm text-gray-500">{user.email}</div> */}
-                            </div>
+                            <div className="px-4"></div>
 
                             <div className="mt-3 space-y-1">
                                 <ResponsiveNavLink href={route('about')} >About</ResponsiveNavLink>
@@ -266,7 +263,7 @@ export default function ReportPage() {
                             <div className='absolute inset-0 bg-gradient-to-b from-transparent to-gray-900 opacity-75 rounded-xl'></div>
                             <div className='absolute inset-0 flex items-center justify-center'>
                                 <div className='text-center text-white'>
-                                    <h1 className='text-2xl sm:text-6xl mx-12 sm:m-4 font-bold'>PHILIPPINE GLOBAL COMPETITIVENESS REPORT CARD</h1>
+                                    <h1 className='text-2xl sm:text-6xl mx-4 sm:m-4 font-bold'>PHILIPPINE GLOBAL COMPETITIVENESS REPORT CARD</h1>
                                     <p className='mt-4 text-base sm:text-lg lg:text-xl'>REPORTS TRACKED</p>
                                 </div>
                             </div>
@@ -275,14 +272,13 @@ export default function ReportPage() {
                 </header>
 
                 <main className='bg-white mx-4 sm:mx-6 lg:mx-32 py-6 px-4 sm:px-6 lg:px-8 mt-6 mb-12'>
-
                     <section className='text-center'>
                         {!selectedMenu ? (
-                            <div className='grid grid-rows-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 sm:gap-4 md:gap-4 lg:gap-0'>
+                            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
                                 {menuItems.map((item, index) => (
-                                    <div key={index} className="relative w-full sm:w-auto">
+                                    <div key={index} className="relative w-full">
                                         <button
-                                            className='bg-gradient-to-r from-blue-900 to-blue-950 text-white font-bold py-4 px-6 rounded-lg transition-transform transform hover:scale-105 w-full h-full sm:w-11/12 sm:h-72'
+                                            className='bg-gradient-to-r from-blue-900 to-blue-950 text-white font-bold py-4 px-6 rounded-lg transition-transform transform hover:scale-105 w-full h-full'
                                             onClick={() => handleMenuClick(item.name)}
                                         >
                                             <div>
@@ -309,18 +305,18 @@ export default function ReportPage() {
                                     />
                                 </div>
                                 <h2 className="text-2xl font-bold mb-4">{selectedMenu}</h2>
-                                <div className="grid grid-rows-1 sm:grid-rows-auto gap-4 flex items-center justify-center">
+                                <div className="flex flex-col items-center justify-center gap-4">
                                     {selectedMenuItem.subMenu.map((subItem, subIndex) => (
-                                        <div key={subIndex} className="no-bg hover:bg-black transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 text-white font-bold py-2 px-4 rounded-lg flex items-center">
+                                        <div key={subIndex} className="hover:bg-black transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 text-white font-bold py-2 px-4 rounded-lg flex items-center space-x-2">
                                             <div>
                                                 <img
                                                     src={subItem.icon}
                                                     alt={`${subItem.name} Icon`}
-                                                    className='h-12 mx-auto'
+                                                    className='h-12'
                                                     style={{ filter: 'invert(100%)' }}
                                                 />
                                             </div>
-                                            <div className="no-underline hover:underline text-lg mx-3 flex items-center">
+                                            <div className="text-lg">
                                                 {subItem.subsubMenu ? (
                                                     <button onClick={() => handleSubMenuClick(subItem.name)}>
                                                         {subItem.name}
@@ -350,18 +346,18 @@ export default function ReportPage() {
                                     />
                                 </div>
                                 <h2 className="text-2xl font-bold mb-4">{selectedSubMenu}</h2>
-                                <div className="grid grid-rows-1 sm:grid-rows-auto gap-4 flex items-center justify-center">
+                                <div className="flex flex-col items-center justify-center gap-4">
                                     {selectedSubMenuItem.subsubMenu.map((subsubItem, subsubIndex) => (
-                                        <div key={subsubIndex} className="no-bg hover:bg-black transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 text-white font-bold py-2 px-4 rounded-lg flex items-center">
+                                        <div key={subsubIndex} className="hover:bg-black transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 text-white font-bold py-2 px-4 rounded-lg flex items-center space-x-2">
                                             <div>
                                                 <img
                                                     src={subsubItem.icon}
                                                     alt={`${subsubItem.name} Icon`}
-                                                    className='h-12 mx-auto'
+                                                    className='h-12'
                                                     style={{ filter: 'invert(100%)' }}
                                                 />
                                             </div>
-                                            <div className="no-underline hover:underline text-lg mx-3 flex items-center">
+                                            <div className="text-lg mx-3 flex items-center">
                                                 {subsubItem.subsubMenu ? (
                                                     <button onClick={() => handleSubMenuClick(subsubItem.name)}>
                                                         {subsubItem.name}
