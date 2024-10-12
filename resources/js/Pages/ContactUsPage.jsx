@@ -104,6 +104,18 @@ export default function ContactUsPage() {
                         </div>
                         <div className='w-full md:w-1/2 p-6'>
                             <form onSubmit={submit}>
+                                {wasSuccessful && (
+                                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
+                                        <strong className="font-bold">Success:</strong>
+                                        <span className="block sm:inline"> Thank you for your feedback! Your message has been sent successfully.</span>
+                                    </div>
+                                )}
+                                {errors.error && (
+                                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
+                                        <strong className="font-bold">Error:</strong>
+                                        <span className="block sm:inline"> {errors.error}</span>
+                                    </div>
+                                )}
                                 <div className='mb-4'>
                                     <label htmlFor="name" className='block text-sm font-bold mb-2'>
                                         Name:
@@ -155,20 +167,6 @@ export default function ContactUsPage() {
                                     ></textarea>
                                     <InputError message={errors.message} className="mt-2" />
                                 </div>
-
-                                {wasSuccessful && (
-                                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
-                                        <strong className="font-bold">Success:</strong>
-                                        <span className="block sm:inline"> Thank you for your feedback! Your message has been sent successfully.</span>
-                                    </div>
-                                )}
-
-                                {errors.error && (
-                                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
-                                        <strong className="font-bold">Error:</strong>
-                                        <span className="block sm:inline"> {errors.error}</span>
-                                    </div>
-                                )}
 
                                 <div className='flex items-center justify-start'>
                                     <button

@@ -340,8 +340,7 @@ export default function NewsPage() {
                     </div>
                 </header>
 
-                <main className='bg-white'>
-
+                <main className='bg-white mx-auto py-6 px-4 sm:px-6 lg:px-8 mt-4 mb-6'>
                     <section className='max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8'>
                         {reports.map((report, index) => (
                             <div key={index} className='mb-6 border rounded-lg shadow-md overflow-hidden'>

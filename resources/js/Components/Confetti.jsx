@@ -4,7 +4,7 @@ import confetti from 'canvas-confetti';
 export default function Confetti() {
 
     useEffect(() => {
-        var duration = 15 * 1000; // 15 seconds duration
+        var duration = 10 * 1000; // 10 seconds duration
         var animationEnd = Date.now() + duration;
         var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 

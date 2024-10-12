@@ -52,27 +52,33 @@ export default function AboutPage() {
                                 Home
                             </ResponsiveNavLink>
                         </div>
-
                         <div className="pt-4 pb-1 border-t border-gray-200">
-
-                            <div className="px-4">
-                                {/* <div className="font-medium text-base text-gray-800">{user.name}</div>
-                            <div className="font-medium text-sm text-gray-500">{user.email}</div> */}
-                            </div>
-
+                            <div className="px-4"></div>
                             <div className="mt-3 space-y-1">
                                 <ResponsiveNavLink href={route('about')} active={route().current('about')}>About</ResponsiveNavLink>
                                 <ResponsiveNavLink href={route('reports')}>Reports</ResponsiveNavLink>
                                 <ResponsiveNavLink href={route('news')}>News</ResponsiveNavLink>
                                 <ResponsiveNavLink href={route('contact-us')}>Contact Us</ResponsiveNavLink>
                             </div>
-
                         </div>
                     </div>
                 </nav>
 
-                <main className='bg-white mx-auto py-6 px-4 sm:px-6 lg:px-8 mt-6 mb-6'>
+                <header className="bg-white">
+                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        <div className='relative overflow-hidden'>
+                            <img src="/backend/assets/images/bg-header.jpg" alt="ARTA Banner" className='w-full h-64 rounded-xl' />
+                            <div className='absolute inset-0 bg-gradient-to-b from-transparent to-gray-900 opacity-75 rounded-xl'></div>
+                            <div className='absolute inset-0 flex items-center justify-center'>
+                                <div className='text-center text-white'>
+                                    <h1 className='text-6xl sm:text-12xl font-bold'>ABOUT</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
 
+                <main className='bg-white mx-auto py-6 px-4 sm:px-6 lg:px-8 mt-4 mb-6'>
                     <section>
                         <div className='max-w-7xl mx-auto shadow-lg p-6 rounded'>
                             <h2 className='text-2xl font-bold mb-4 bg-sky-900 text-white p-5 rounded'>ABOUT THE REPORT CARD</h2>
@@ -84,15 +90,10 @@ export default function AboutPage() {
                             </p>
                         </div>
                     </section>
-
                 </main>
-
                 <Footer />
-
                 <ScrollToTopButton />
-
             </div>
-
         </>
     );
 }
