@@ -74,10 +74,10 @@ export default function HomePage() {
                 {/* Partner Logos Section */}
                 <div className='max-w-6xl bg-white shadow-sm mx-auto py-6 px-4 sm:px-6 lg:px-8 -mt-5 sm:-mt-24 relative z-0 rounded-none sm:rounded-full'
                     style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1)' }}>
-                    <div className='max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between relative'>
+                    <div className='max-w-6xl mx-auto flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row items-center justify-between relative'>
                         <div className='flex flex-col sm:flex-row items-center mb-4 sm:mb-0'>
                             <span className='text-lg font-semi-bold mr-4 ml-4'>Organized by:</span>
-                            <img src="/backend/assets/images/logo-arta.png" alt="ARTA Logo" className='h-16 sm:h-10 md:h-16' />
+                            <img src="/backend/assets/images/logo-arta.png" alt="ARTA Logo" className='h-16 max-w-full object-contain' />
                         </div>
                         <PartnerLogos />
                     </div>

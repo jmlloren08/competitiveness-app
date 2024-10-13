@@ -265,7 +265,7 @@ export default function NewsPage() {
 
     return (
         <>
-            <Head title="News -nPhilippine Global Competitiveness Report Card" />
+            <Head title="News - Philippine Global Competitiveness Report Card" />
 
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">

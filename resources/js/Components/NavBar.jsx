@@ -14,7 +14,7 @@ export default function NavBar() {
                 <ApplicationLogo
                     src='/backend/assets/images/logo-arta.png'
                     alt='ARTA Logo'
-                    className='h-16'
+                    className='h-16 max-w-full object-contain'
                 />
             </Link>
             {/* Desktop Menu */}
@@ -37,27 +37,20 @@ export default function NavBar() {
             </div>
 
             <div className='hidden space-x-1 ml-5 sm:flex'>
-                <a href="https://www.dti.gov.ph/" target='_blank' rel='noopener noreferrer' className='scale-90 hover:scale-100 transition-transform duration-300'>
-                    <img
-                        src="/backend/assets/images/logo-dti.png"
-                        alt="DTI Logo"
-                        className='h-16'
-                    />
-                </a>
-                <a href="https://aim.edu/" target='_blank' rel='noopener noreferrer' className='scale-90 hover:scale-100 transition-transform duration-300'>
-                    <img
-                        src="/backend/assets/images/logo-aim.png"
-                        alt="AIM Logo"
-                        className='h-16'
-                    />
-                </a>
-                <a href="https://liveablecities.ph/" target='_blank' rel='noopener noreferrer' className='scale-90 hover:scale-100 transition-transform duration-300'>
-                    <img
-                        src="/backend/assets/images/logo-lcp.png"
-                        alt="LCP Logo"
-                        className='h-16'
-                    />
-                </a>
+                {[
+                    { src: '/backend/assets/images/logo-dti.png', alt: 'DTI Logo', url: 'https://www.dti.gov.ph/' },
+                    { src: '/backend/assets/images/logo-aim.png', alt: 'AIM Logo', url: 'https://aim.edu/' },
+                    { src: '/backend/assets/images/logo-lcp.png', alt: 'LCP Logo', url: 'https://www.lcp.gov.ph/' }
+                ].map((logo, index) => (
+                    <a key={logo.alt} href={logo.url} target='_blank' rel='noopener noreferrer' className='scale-90 hover:scale-100 transition-transform duration-300'>
+                        <img
+                            key={index}
+                            src={logo.src}
+                            alt={logo.alt}
+                            className='h-16 max-w-full object-contain'
+                        />
+                    </a>
+                ))}
             </div>
 
         </div>

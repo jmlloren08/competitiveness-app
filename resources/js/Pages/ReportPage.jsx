@@ -274,26 +274,50 @@ export default function ReportPage() {
                 <main className='bg-white mx-4 sm:mx-6 lg:mx-32 py-6 px-4 sm:px-6 lg:px-8 mt-6 mb-12'>
                     <section className='text-center'>
                         {!selectedMenu ? (
-                            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
-                                {menuItems.map((item, index) => (
-                                    <div key={index} className="relative w-full">
-                                        <button
-                                            className='bg-gradient-to-r from-blue-900 to-blue-950 text-white font-bold py-4 px-6 rounded-lg transition-transform transform hover:scale-105 w-full h-full'
-                                            onClick={() => handleMenuClick(item.name)}
-                                        >
-                                            <div>
-                                                <img
-                                                    src={item.icon}
-                                                    alt={`${item.name} Icon`}
-                                                    className='h-auto mx-auto'
-                                                    style={{ filter: 'invert(100%)' }}
-                                                />
-                                            </div>
-                                            <div className="text-2xl flex items-center justify-center">{item.name}</div>
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
+                            <>
+                                {/* for large screens */}
+                                <div className='hidden lg:flex lg:justify-center xl:flex xl:justify-center gap-4'>
+                                    {menuItems.map((item, index) => (
+                                        <div key={index} className="relative w-full flex-1">
+                                            <button
+                                                className='bg-gradient-to-r from-blue-900 to-blue-950 text-white font-bold py-4 px-6 rounded-lg transition-transform transform hover:scale-105 w-full h-full'
+                                                onClick={() => handleMenuClick(item.name)}
+                                            >
+                                                <div>
+                                                    <img
+                                                        src={item.icon}
+                                                        alt={`${item.name} Icon`}
+                                                        className='h-auto mx-auto'
+                                                        style={{ filter: 'invert(100%)' }}
+                                                    />
+                                                </div>
+                                                <div className="text-2xl flex items-center justify-center">{item.name}</div>
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                                {/* for small screens */}
+                                <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:hidden xl:hidden gap-4'>
+                                    {menuItems.map((item, index) => (
+                                        <div key={index} className="relative w-full">
+                                            <button
+                                                className='bg-gradient-to-r from-blue-900 to-blue-950 text-white font-bold py-4 px-6 rounded-lg transition-transform transform hover:scale-105 w-full h-full'
+                                                onClick={() => handleMenuClick(item.name)}
+                                            >
+                                                <div>
+                                                    <img
+                                                        src={item.icon}
+                                                        alt={`${item.name} Icon`}
+                                                        className='h-auto mx-auto'
+                                                        style={{ filter: 'invert(100%)' }}
+                                                    />
+                                                </div>
+                                                <div className="text-2xl flex items-center justify-center">{item.name}</div>
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            </>
                         ) : !selectedSubMenu ? (
                             <div className="mb-6 bg-gradient-to-r from-blue-950 to-blue-900 text-white font-bold py-4 px-6 rounded-lg">
                                 <div className="mb-4">
