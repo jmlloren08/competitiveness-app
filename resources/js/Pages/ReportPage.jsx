@@ -201,7 +201,7 @@ export default function ReportPage() {
 
     return (
         <>
-            <Head title="Competitiveness Dashboard - Reports" />
+            <Head title="Reports - Philippine Global Competitiveness Report Card" />
 
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">
