@@ -16,7 +16,7 @@ export default function HomePage() {
 
     return (
         <>
-            <Head title="Competitiveness Dashboard" />
+            <Head title="Philippine Global Competitiveness Report Card" />
             <Confetti />
             {/* Navigation */}
             <div className="min-h-screen bg-white-100">

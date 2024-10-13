@@ -29,7 +29,7 @@ export default function ContactUsPage() {
 
     return (
         <>
-            <Head title="Competitiveness Dashboard - Reports" />
+            <Head title="Contact - Philippine Global Competitiveness Report Card" />
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
