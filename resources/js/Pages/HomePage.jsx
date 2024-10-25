@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Head } from '@inertiajs/react';
-import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
+const ScrollToTopButton = React.lazy(() => import('@/Components/ScrollToTopButton'));
+const Loader = React.lazy(() => import('@/Components/Loading'));
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const Header = React.lazy(() => import('@/Components/Header'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
@@ -13,8 +14,15 @@ const Confetti = React.lazy(() => import('@/Components/Confetti'));
 export default function HomePage() {
 
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-    return (
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 500);
+    }, []);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <>
             <Head title="Philippine Global Competitiveness Report Card" />
             <Confetti />
@@ -100,7 +108,6 @@ export default function HomePage() {
                     </section>
                     <div className='max-w-6xl mx-auto shadow-lg p-6 rounded'>
                         <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>PHILIPPINES REPORTS RANKING</h2>
-                        <h2 className='text-white text-center font-bold bg-blue-900 p-3 mb-6'>CHART</h2>
                         <PhilippinesReportsRanking />
 
                     </div>

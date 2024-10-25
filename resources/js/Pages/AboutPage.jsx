@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Head } from '@inertiajs/react';
-import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
+const ScrollToTopButton = React.lazy(() => import('@/Components/ScrollToTopButton'));
+const Loader = React.lazy(() => import('@/Components/Loading'));
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 
 export default function AboutPage() {
-    const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
-    return (
+    const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 500);
+    }, []);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <>
             <Head title="About - Philippine Global Competitiveness Report Card" />
 
@@ -88,6 +97,24 @@ export default function AboutPage() {
                             <p className='p-3'>
                                 This dashboard will serve as an integrated platform designed to monitor and analyze various aspects of the country’s competitiveness. It will offer a centralized view of key data and performance metrics, enabling stakeholders to make informed decisions and implement strategies for enhancing competitiveness.
                             </p>
+                        </div>
+                    </section>
+                    {/* youtube video section */}
+                    <section>
+                        <div className='max-w-7xl mx-auto shadow-lg p-6 rounded mt-8 mb-8'>
+                            <h2 className='text-2xl font-bold mb-4'>Watch Our Video</h2>
+                            <div className='rounded mb-4'>
+                                <iframe
+                                    width="100%"
+                                    height="669"
+                                    src="https://www.youtube.com/embed/aa2JcZMluDg"
+                                    title="Philippine Global Competitiveness Report Card"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerPolicy="strict-origin-when-cross-origin"
+                                    allowFullScreen
+                                ></iframe>
+                            </div>
                         </div>
                     </section>
                 </main>

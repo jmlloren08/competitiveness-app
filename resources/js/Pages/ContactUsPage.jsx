@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Head, useForm } from '@inertiajs/react';
-import ScrollToTopButton from '@/Components/ScrollToTopButton';
-import InputError from '@/Components/InputError';
 
+const ScrollToTopButton = React.lazy(() => import('@/Components/ScrollToTopButton'));
+const InputError = React.lazy(() => import('@/Components/InputError'));
+const Loader = React.lazy(() => import('@/Components/Loading'));
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 
 export default function ContactUsPage() {
 
+    const [loading, setLoading] = useState(true);
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const { data, setData, post, processing, errors, reset, wasSuccessful } = useForm({
         name: '',
@@ -27,7 +29,13 @@ export default function ContactUsPage() {
         post(route('contact-us'));
     }
 
-    return (
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 500);
+    }, []);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <>
             <Head title="Contact - Philippine Global Competitiveness Report Card" />
             <div className="min-h-screen bg-white-100">

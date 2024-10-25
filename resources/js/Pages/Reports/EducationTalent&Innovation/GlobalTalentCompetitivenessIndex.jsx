@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
-import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
+const ScrollToTopButton = React.lazy(() => import('@/Components/ScrollToTopButton'));
+const Loader = React.lazy(() => import('@/Components/Loading'));
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
@@ -11,6 +12,8 @@ const ETIGTCI = React.lazy(() => import('@/Components/Custom/ETI/GTCI/ETIGTCI'))
 const IndicatorRankingGTCI = React.lazy(() => import('@/Components/Custom/ETI/GTCI/IndicatorRankingGTCI'));
 
 export default function GlobalTalentCompetitivenessIndex() {
+
+    const [loading, setLoading] = useState(true);
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [data, setData] = useState({
         gauge: null,
@@ -37,7 +40,13 @@ export default function GlobalTalentCompetitivenessIndex() {
     const aseanRank = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].rank_in_asean : 'NDA';
     const remarks = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].remarks : 'NDA';
 
-    return (
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 500);
+    }, []);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <>
             <Head title="Competitiveness Dashboard - Reports/Education Talent & Innovation/Global Talent Competitiveness Index" />
 

@@ -11,7 +11,7 @@ class PhilippinesReportsRankingController extends Controller
     {
         try {
 
-            $rankings = PhilippinesReportsRanking::select('gauge_id', 'gauge', 'category', 'report', 'source_publisher', 'ranks', 'remarks', 'as_of')
+            $rankings = PhilippinesReportsRanking::select('gauge_id', 'gauge', 'category', 'report', 'source_publisher', 'ranks', 'remarks', 'as_of', 'route')
                 ->orderBy('gauge_id', 'asc')
                 ->get();
 
@@ -25,7 +25,8 @@ class PhilippinesReportsRankingController extends Controller
                     'gauge' => $ranking->gauge,
                     'category' => $ranking->category,
                     'remarks' => $ranking->remarks,
-                    'as_of' => $ranking->as_of
+                    'as_of' => $ranking->as_of,
+                    'route' => $ranking->route
                 ];
             }
 

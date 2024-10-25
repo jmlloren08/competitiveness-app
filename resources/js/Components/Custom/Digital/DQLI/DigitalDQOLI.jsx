@@ -6,7 +6,6 @@ export default function DigitalDQOLI() {
     const [chartDataDQLI, setChartDataDQLI] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [loadingDQLI, setloadingDQLI] = useState(true);
 
     useEffect(() => {
         axios.get('/digital-quality-of-life-index')
@@ -15,17 +14,11 @@ export default function DigitalDQOLI() {
                 setYears(years.map(item => item.dqli_year));
                 setCountries(countries.map(item => item.dqli_country));
                 setChartDataDQLI(data);
-                setloadingDQLI(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setloadingDQLI(false);
             });
     }, [])
-
-    if (loadingDQLI) {
-        return <div>Please wait...</div>
-    }
 
     const series = countries.map(country => ({
         name: country,
@@ -69,14 +62,14 @@ export default function DigitalDQOLI() {
     const dqli_economies = ['65 economies', '85 economies', '110 economies', '117 economies', '121 economies'];
 
     return (
-        <div>
+        < div >
             <h2 className='text-white text-center font-bold bg-blue-900 p-3'>CHART</h2>
             <Chart
                 options={options}
                 series={series}
                 type='line'
                 height={350}
-                className='mt-3'
+                className='mt-3 border border-gray-100 rounded-lg'
             />
 
             <div className='overflow-x-auto mt-6'>
@@ -97,7 +90,7 @@ export default function DigitalDQOLI() {
                         </div>
                     ))}
                 </div>
-                
+
                 <div className="hidden md:block">
                     {/* desktop view */}
                     <table className='min-w-full border-collapse'>
@@ -131,6 +124,6 @@ export default function DigitalDQOLI() {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 }

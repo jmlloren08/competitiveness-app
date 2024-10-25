@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
-import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
+const ScrollToTopButton = React.lazy(() => import('@/Components/ScrollToTopButton'));
+const Loader = React.lazy(() => import('@/Components/Loading'));
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
@@ -11,6 +12,8 @@ const DigitalNRI = React.lazy(() => import('@/Components/Custom/Digital/NRI/Digi
 const IndicatorRankingNRI = React.lazy(() => import('@/Components/Custom/Digital/NRI/IndicatorRankingNRI'));
 
 export default function NetworkReadinessIndex() {
+
+    const [loading, setLoading] = useState(true);
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [data, setData] = useState({
         gauge: null,
@@ -37,7 +40,13 @@ export default function NetworkReadinessIndex() {
     const aseanRank = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].rank_in_asean : 'NDA';
     const remarks = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].remarks : 'NDA';
 
-    return (
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 500);
+    }, []);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <>
             <Head title="Competitiveness Dashboard - Reports/Digital/Network Readiness Index" />
 
@@ -165,12 +174,12 @@ export default function NetworkReadinessIndex() {
                                 <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>NEWS ARTICLES</h2>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://www.dti.gov.ph/archives/news-archives/ph-biggest-mover-network-readiness-index-2022-report/" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    PH emerges as the “year’s biggest mover” in Network Readiness Index (NRI) 2022 Report
+                                        PH emerges as the “year’s biggest mover” in Network Readiness Index (NRI) 2022 Report
                                     </a>
                                 </p>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://mb.com.ph/2022/11/29/ph-jumps-in-global-ict-readiness-ranking/" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    PH jumps in global ICT readiness ranking
+                                        PH jumps in global ICT readiness ranking
                                     </a>
                                 </p>
                             </div>
@@ -179,27 +188,27 @@ export default function NetworkReadinessIndex() {
                                 <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>DOWNLOAD THE NETWORK READINESS INDEX</h2>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://download.networkreadinessindex.org/reports/nri_2023.pdf" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    2023 Network Readiness Index
+                                        2023 Network Readiness Index
                                     </a>
                                 </p>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://download.networkreadinessindex.org/reports/nri_2022.pdf" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    2022 Network Readiness Index
+                                        2022 Network Readiness Index
                                     </a>
                                 </p>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://download.networkreadinessindex.org/reports/nri_2021.pdf" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    2021 Network Readiness Index
+                                        2021 Network Readiness Index
                                     </a>
                                 </p>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://networkreadinessindex.org/wp-content/uploads/2022/09/NRI_2020_Report.pdf" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    2020 Network Readiness Index
+                                        2020 Network Readiness Index
                                     </a>
                                 </p>
                                 <p className='p-2 font-bold text-lg underline'>
                                     <a href="https://networkreadinessindex.org/wp-content/uploads/2022/09/NRI_2019_Report.pdf" className='text-blue-500 transition ease-in-out hover:text-blue-700 hover:text-xl'>
-                                    2019 Network Readiness Index
+                                        2019 Network Readiness Index
                                     </a>
                                 </p>
                             </div>

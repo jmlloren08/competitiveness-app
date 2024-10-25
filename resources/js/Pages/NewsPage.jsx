@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Head } from '@inertiajs/react';
-import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
+const ScrollToTopButton = React.lazy(() => import('@/Components/ScrollToTopButton'));
+const Loader = React.lazy(() => import('@/Components/Loading'));
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 
 export default function NewsPage() {
+
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const reports = [
         {
@@ -263,7 +266,13 @@ export default function NewsPage() {
         }
     ]
 
-    return (
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 500);
+    }, []);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <>
             <Head title="News - Philippine Global Competitiveness Report Card" />
 

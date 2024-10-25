@@ -243,3 +243,4 @@ Route::middleware('auth')->group(function () {
 Route::permanentRedirect('/404', '/login');
 Route::permanentRedirect('/404', '/register');
 Route::permanentRedirect('/404', '/password/reset');
+

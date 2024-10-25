@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
-import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
+const ScrollToTopButton = React.lazy(() => import('@/Components/ScrollToTopButton'));
+const Loader = React.lazy(() => import('@/Components/Loading'));
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 
 export default function ReportPage() {
+
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [selectedMenu, setSelectedMenu] = useState('');
     const [selectedSubMenu, setSelectedSubMenu] = useState('');
+    const [loading, setLoading] = useState(true);
 
     const menuItems = [
         {
@@ -199,7 +202,13 @@ export default function ReportPage() {
     const selectedMenuItem = menuItems.find(item => item.name === selectedMenu);
     const selectedSubMenuItem = selectedMenuItem?.subMenu?.find(sub => sub.name === selectedSubMenu);
 
-    return (
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 500);
+    }, []);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <>
             <Head title="Reports - Philippine Global Competitiveness Report Card" />
 

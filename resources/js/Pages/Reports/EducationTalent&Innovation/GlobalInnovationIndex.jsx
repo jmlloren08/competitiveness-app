@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
-import ScrollToTopButton from '@/Components/ScrollToTopButton';
 
+const ScrollToTopButton = React.lazy(() => import('@/Components/ScrollToTopButton'));
+const Loader = React.lazy(() => import('@/Components/Loading'));
 const ResponsiveNavLink = React.lazy(() => import('@/Components/ResponsiveNavLink'));
 const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 const Gauge = React.lazy(() => import('@/Components/Gauge'));
 const ETIGII = React.lazy(() => import('@/Components/Custom/ETI/GII/ETIGII'));
-const IndicatorRankingGII = React.lazy(() => import( '@/Components/Custom/ETI/GII/IndicatorRankingGII'));
+const IndicatorRankingGII = React.lazy(() => import('@/Components/Custom/ETI/GII/IndicatorRankingGII'));
 
 export default function GlobalInnovationIndex() {
+
+    const [loading, setLoading] = useState(true);
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [data, setData] = useState({
         gauge: null,
@@ -37,7 +40,13 @@ export default function GlobalInnovationIndex() {
     const aseanRank = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].rank_in_asean : 'NDA';
     const remarks = data.vsAseanEconomies.length ? data.vsAseanEconomies[0].remarks : 'NDA';
 
-    return (
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 500);
+    }, []);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <>
             <Head title="Competitiveness Dashboard - Reports/Education Talent & Innovation/Global Innovation Index" />
 
