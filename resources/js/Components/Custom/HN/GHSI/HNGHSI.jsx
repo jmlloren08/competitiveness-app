@@ -48,16 +48,15 @@ export default function HNGHSI() {
             min: 0
         },
         yaxis: {
-            min: 0
+            min: 1,
+            reversed: true,
+            title: {
+                text: 'Rank'
+            }
         },
         tooltip: {
             y: {
-                formatter: function (val) {
-                    if (val === null | val === undefined | isNaN(val)) {
-                        return 'NDA';
-                    }
-                    return val;
-                }
+                formatter: (val) => (isNaN(val) || val === null ? 'NDA' : val)
             }
         },
         colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'],

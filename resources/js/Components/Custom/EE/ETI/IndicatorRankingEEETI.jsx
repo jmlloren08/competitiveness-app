@@ -57,62 +57,9 @@ export default function IndicatorRankingEEETI() {
         });
     }
 
-    const options = {
-        chart: {
-            type: 'bar',
-            height: 400,
-            toolbar: {
-                show: true
-            }
-        },
-        plotOptions: {
-            bar: {
-                horizontal: false
-            }
-        },
-        xaxis: {
-            categories: chartData.categories
-        },
-        legend: {
-            position: 'top'
-        },
-        fill: {
-            opacity: 1
-        },
-        dataLabels: {
-            enabled: false
-        }
-    }
-
     return (
         <div>
-            <h2 className='text-white text-center font-bold bg-blue-900 p-3'>CHART</h2>
-
-            <div className='text-center my-4 flex flex-col sm:flex-row items-center justify-center'>
-                <h1 className='mr-2'>Select year:</h1>
-                <select
-                    className='p-2 border rounded'
-                    value={selectedYear}
-                    onChange={(e) => setSelectedYear(e.target.value)}
-                >
-                    <option value='' disabled>Select year</option>
-                    {availableYears.map(year => (
-                        <option key={year} value={year}>
-                            {year}
-                        </option>
-                    ))}
-                </select>
-            </div>
-
-            <Chart
-                options={options}
-                series={chartData.series}
-                type='bar'
-                height={400}
-                className='mt-6'
-            />
-
-            <div className='mt-8 overflow-x-auto'>
+            <div className='overflow-x-auto'>
                 <h2 className='text-white text-center font-bold bg-blue-900 p-3'>TABLE</h2>
                 <table className='min-w-full bg-white border text-sm sm:table hidden'>
                     <thead className='bg-blue-900 text-white'>

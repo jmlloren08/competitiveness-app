@@ -3,10 +3,10 @@ import Chart from 'react-apexcharts';
 import axios from 'axios';
 
 export default function DigitalNRI() {
+
     const [chartDataNRI, setChartDataNRI] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [loadingNRI, setLoadingNRI] = useState(true);
 
     useEffect(() => {
         axios.get('/network-readiness-index')
@@ -15,17 +15,11 @@ export default function DigitalNRI() {
                 setYears(years.map(item => item.nri_year));
                 setCountries(countries.map(item => item.nri_country));
                 setChartDataNRI(data);
-                setLoadingNRI(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setLoadingNRI(false);
             });
     }, []);
-
-    if (loadingNRI) {
-        return <div>Please wait...</div>
-    }
 
     const series = countries.map(country => ({
         name: country,
@@ -48,16 +42,15 @@ export default function DigitalNRI() {
             min: 0
         },
         yaxis: {
-            min: 0
+            min: 1,
+            reversed: true,
+            title: {
+                text: 'Rank'
+            }
         },
         tooltip: {
             y: {
-                formatter: function (val) {
-                    if (val === null | val === undefined | isNaN(val)) {
-                        return 'NDA';
-                    }
-                    return val;
-                }
+                formatter: (val) => (isNaN(val) || val === null ? 'NDA' : val)
             }
         },
         colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'],

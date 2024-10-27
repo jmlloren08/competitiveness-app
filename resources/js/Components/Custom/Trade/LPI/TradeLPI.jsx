@@ -3,10 +3,10 @@ import Chart from 'react-apexcharts';
 import axios from 'axios';
 
 export default function TradeLPI() {
+
     const [chartDataTradeLPI, setChartDataTradeLPI] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [loadingTradeLPI, setLoadingTradeLPI] = useState(true);
 
     useEffect(() => {
         axios.get('/get-trade-lpi-view-the-ranking')
@@ -15,17 +15,11 @@ export default function TradeLPI() {
                 setYears(years.map(item => item.lpi_year));
                 setCountries(countries.map(item => item.lpi_country));
                 setChartDataTradeLPI(data);
-                setLoadingTradeLPI(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setLoadingTradeLPI(false);
             });
     }, []);
-
-    if (loadingTradeLPI) {
-        return <div>Please wait...</div>
-    }
 
     const series = countries.map(country => ({
         name: country,
@@ -48,16 +42,15 @@ export default function TradeLPI() {
             min: 0
         },
         yaxis: {
-            min: 0
+            min: 1,
+            reversed: true,
+            title: {
+                text: 'Rank'
+            }
         },
         tooltip: {
             y: {
-                formatter: function (val) {
-                    if (val === null | val === undefined | isNaN(val)) {
-                        return 'NDA';
-                    }
-                    return val;
-                }
+                formatter: (val) => (isNaN(val) || val === null ? 'NDA' : val)
             }
         },
         colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'],

@@ -68,9 +68,15 @@ export default function PhilippinesReportsRanking() {
                     </tbody>
                 </table>
 
-                <div className="flex flex-col mt-4">
-                    <div className='text-xs flex items-center mb-2'>
-                        <p>Legend: * Worldwide Governance Indicators (WGI).</p>
+                <div className="flex flex-col text-xs mt-4">
+                    <div className='flex items-center'>
+                        <p>Legend:</p>
+                    </div>
+                    <div className='text-xs'>
+                        <p>* Worldwide Governance Indicators (WGI)</p>
+                    </div>
+                    <div className='text-xs'>
+                        <p>** Programme for International Student Assessment (PISA)</p>
                     </div>
                 </div>
 

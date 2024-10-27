@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 
 export default function IndicatorRankingWTR() {
+
     const [chartData, setChartData] = useState({
         series: [],
         categories: []
@@ -30,20 +31,15 @@ export default function IndicatorRankingWTR() {
         if (!yearData) return;
 
         const categories = [];
-        const seriesData = [];
+        const seriesData = {};
 
         yearData.forEach(item => {
             if (!categories.includes(item.country)) {
                 categories.push(item.country);
             }
-
             const subcategory = item.indicator_ranking;
-
-            if (!seriesData[subcategory]) {
-                seriesData[subcategory] = [];
-            }
-
-            seriesData[subcategory].push(item.counts);
+            seriesData[subcategory] = seriesData[subcategory] || [];
+            seriesData[subcategory].push({ x: item.country, y: isNaN(item.counts) ? null : item.counts });
         });
 
         const series = Object.keys(seriesData).map(subcategory => ({
@@ -53,45 +49,81 @@ export default function IndicatorRankingWTR() {
 
         setChartData({
             series: series,
-            categories: categories
+            categories: categories,
         });
     }
 
     const options = {
         chart: {
-            type: 'bar',
-            height: 400,
+            type: 'heatmap',
+            height: 950,
             toolbar: {
                 show: true
             }
         },
         plotOptions: {
-            bar: {
-                horizontal: false
+            heatmap: {
+                colorScale: {
+                    inverse: true
+                }
             }
         },
         xaxis: {
-            categories: chartData.categories
+            categories: chartData.categories,
+            position: 'top',
+            labels: {
+                align: 'center',
+                offsetX: 0,
+                offsetY: 0,
+                style: {
+                    fontSize: '9px',
+                    fontWeight: 'bold',
+                }
+            }
         },
-        legend: {
-            position: 'top'
+        yaxis: {
+            title: {
+                text: 'Indicator Ranking',
+                align: 'center',
+                offsetX: 13,
+                offsetY: 0,
+                style: {
+                    fontSize: '12px'
+                }
+            },
         },
-        fill: {
-            opacity: 1
+        tooltip: {
+            y: {
+                formatter: (val) => (`Rank: ${isNaN(val) || val === null ? 'NDA' : val}`)
+            }
         },
         dataLabels: {
-            enabled: false
-        }
+            enabled: true,
+            style: {
+                fontSize: '12px',
+                fontWeight: 'normal',
+                colors: ['#000']
+            }
+        },
+        colors: ['#e74c3c'],
+        title: {
+            text: 'Rank (Lighter Color = Higher Rank | Darker Color = Lower Rank)',
+            align: 'center',
+            style: {
+                fontSize: '10px',
+                fontWeight: 'normal',
+            }
+        },
     }
 
     return (
         <div>
-            <h2 className='text-white text-center font-bold bg-blue-900 p-3'>CHART</h2>
+            <h2 className='text-white text-center font-bold bg-blue-900 p-3'>HEATMAP CHART</h2>
 
             <div className='text-center my-4 flex flex-col sm:flex-row items-center justify-center'>
                 <h1 className='mr-2'>Select year:</h1>
                 <select
-                    className='p-2 border rounded'
+                    className="p-2 border rounded"
                     value={selectedYear}
                     onChange={(e) => setSelectedYear(e.target.value)}
                 >
@@ -107,12 +139,12 @@ export default function IndicatorRankingWTR() {
             <Chart
                 options={options}
                 series={chartData.series}
-                type='bar'
-                height={400}
+                type='heatmap'
+                height={950}
                 className='mt-6'
             />
 
-            <div className='mt-8 overflow-x-auto'>
+            <div className='overflow-x-auto'>
                 <h2 className='text-white text-center font-bold bg-blue-900 p-3'>TABLE</h2>
                 <table className='min-w-full bg-white border text-sm sm:table hidden'>
                     <thead className='bg-blue-900 text-white'>
@@ -132,7 +164,7 @@ export default function IndicatorRankingWTR() {
                                     <td className={`px-4 py-2 border font-bold ${rowBgColor}`}>{seriesItem.name}</td>
                                     {seriesItem.data.map((dataItem, dataIndex) => (
                                         <td key={dataIndex} className='px-4 py-2 border text-center'>
-                                            {dataItem || 0}
+                                            {dataItem.y || 'NDA'}
                                         </td>
                                     ))}
                                 </tr>
@@ -150,7 +182,7 @@ export default function IndicatorRankingWTR() {
                                 {seriesItem.data.map((dataItem, dataIndex) => (
                                     <div key={dataIndex} className='flex justify-between p-2 border-b'>
                                         <div className='font-semibold'>{chartData.categories[dataIndex]}</div>
-                                        <div>{dataItem || 0}</div>
+                                        <div>{dataItem.y || 'NDA'}</div>
                                     </div>
                                 ))}
                             </div>

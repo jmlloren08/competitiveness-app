@@ -3,29 +3,22 @@ import Chart from 'react-apexcharts';
 import axios from 'axios';
 
 export default function DigitalICTDI() {
+
     const [chartdataICTDI, setChartDataICTDI] = useState([]);
     const years = ['2023', 'NDA', 'NDA', 'NDA', 'NDA'];
     const [countries, setCountries] = useState([]);
-    const [loadingICTDI, setLoadingICTDI] = useState(true);
 
     useEffect(() => {
         axios.get('/ict-development-index')
             .then(response => {
                 const { countries, data } = response.data;
-                // setYears(years.map(item => item.ictdi_year));
                 setCountries(countries.map(item => item.ictdi_country));
                 setChartDataICTDI(data);
-                setLoadingICTDI(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setLoadingICTDI(false);
             });
     }, []);
-
-    if (loadingICTDI) {
-        return <div>Please wait...</div>
-    }
 
     const series = countries.map(country => ({
         name: country,
@@ -48,16 +41,15 @@ export default function DigitalICTDI() {
             min: 0
         },
         yaxis: {
-            min: 0
+            min: 1,
+            reversed: true,
+            title: {
+                text: 'Rank'
+            }
         },
         tooltip: {
             y: {
-                formatter: function (val) {
-                    if (val === null | val === undefined | isNaN(val)) {
-                        return 'NDA';
-                    }
-                    return val;
-                }
+                formatter: (val) => (isNaN(val) || val === null ? 'NDA' : val)
             }
         },
         colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'],

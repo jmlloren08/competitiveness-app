@@ -37,8 +37,12 @@ export default function IndicatorRankingWCR() {
                 categories.push(item.country);
             }
             const subcategory = item.indicator_ranking;
-            seriesData[subcategory] = seriesData[subcategory] || [];
-            seriesData[subcategory].push({ x: item.country, y: isNaN(item.counts) ? null : item.counts });
+
+            if (!seriesData[subcategory]) {
+                seriesData[subcategory] = [];
+            }
+
+            seriesData[subcategory].push({ x: item.country, y: item.counts === 'NDA' ? null : item.counts });
         });
 
         const series = Object.keys(seriesData).map(subcategory => ({
@@ -48,9 +52,10 @@ export default function IndicatorRankingWCR() {
 
         setChartData({
             series: series,
-            categories: categories,
+            categories: categories
         });
     }
+
 
     const options = {
         chart: {
@@ -58,13 +63,6 @@ export default function IndicatorRankingWCR() {
             height: 950,
             toolbar: {
                 show: true
-            }
-        },
-        plotOptions: {
-            heatmap: {
-                colorScale: {
-                    inverse: true
-                }
             }
         },
         xaxis: {
@@ -75,8 +73,7 @@ export default function IndicatorRankingWCR() {
                 offsetX: 0,
                 offsetY: 0,
                 style: {
-                    fontSize: '9px',
-                    fontWeight: 'bold',
+                    fontSize: '10.5px',
                 }
             }
         },
@@ -91,28 +88,25 @@ export default function IndicatorRankingWCR() {
                 }
             },
         },
-        tooltip: {
-            y: {
-                formatter: (val) => (`Rank: ${isNaN(val) || val === null ? 'NDA' : val}`)
-            }
-        },
         dataLabels: {
             enabled: true,
             style: {
                 fontSize: '12px',
                 fontWeight: 'normal',
                 colors: ['#000']
-            }
+            },
+            formatter: (val) => (val === null ? 'NDA' : val)
         },
-        colors: ['#e74c3c'],
         title: {
             text: 'Rank (Lighter Color = Higher Rank | Darker Color = Lower Rank)',
             align: 'center',
+            offsetX: 0,
+            offsetY: -3.5,
+            floating: true,
             style: {
-                fontSize: '10px',
-                fontWeight: 'normal',
+                fontSize: '10px'
             }
-        },
+        }
     }
 
     return (

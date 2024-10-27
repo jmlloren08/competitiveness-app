@@ -3,10 +3,10 @@ import Chart from 'react-apexcharts';
 import axios from 'axios';
 
 export default function DigitalEGDI() {
+
     const [chartDataEGDI, setChartDataEGDI] = useState([]);
     const [years, setYears] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [loadingEGDI, setLoadingEGDI] = useState(true);
 
     useEffect(() => {
         axios.get('/e-government-development-index')
@@ -15,17 +15,11 @@ export default function DigitalEGDI() {
                 setYears(years.map(item => item.egdi_year));
                 setCountries(countries.map(item => item.egdi_country));
                 setChartDataEGDI(data);
-                setLoadingEGDI(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setLoadingEGDI(false);
             });
-    }, [])
-
-    if (loadingEGDI) {
-        return <div>Please wait...</div>
-    }
+    }, []);
 
     const series = countries.map(country => ({
         name: country,
@@ -48,16 +42,15 @@ export default function DigitalEGDI() {
             min: 0
         },
         yaxis: {
-            min: 0
+            min: 1,
+            reversed: true,
+            title: {
+                text: 'Rank'
+            }
         },
         tooltip: {
             y: {
-                formatter: function (val) {
-                    if (val === null || val === undefined || isNaN(val)) {
-                        return 'NDA';
-                    }
-                    return val;
-                }
+                formatter: (val) => (isNaN(val) || val === null ? 'NDA' : val)
             }
         },
         colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'],
