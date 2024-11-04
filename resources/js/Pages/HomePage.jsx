@@ -10,7 +10,7 @@ const Footer = React.lazy(() => import('@/Components/Footer'));
 const PartnerLogos = React.lazy(() => import('@/Components/PartnerLogos'));
 const PhilippinesReportsRanking = React.lazy(() => import('@/Components/PhilippinesReportsRanking'));
 
-export default function HomePage({ poem }) {
+export default function HomePage() {
 
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [loading, setLoading] = useState(true);

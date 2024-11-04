@@ -29,9 +29,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Http;
 
 Route::get('/', function () {
-    return Inertia::render('HomePage', [
-        'openAiKey' => config('services.openai.api_key'),
-    ]);
+    return Inertia::render('HomePage');
 })->name('/');
 
 Route::get('/about', function () {
@@ -232,8 +230,6 @@ Route::get('/get-trade-lpi-indicator-ranking', [LogisticsPerformanceIndexControl
 
 // fetch data for chart and table to homepage
 Route::get('/phils-reports-ranking', [PhilippinesReportsRankingController::class, 'getPhilippinesReportsRanking']);
-
-// endpoint
 
 // disable the login and register url if someone try to modify the url in the browser
 Route::permanentRedirect('/404', '/login');
