@@ -31,7 +31,7 @@ export default function ScrollToTopButton() {
             {isVisible && (
                 <button
                     onClick={scrollToTop}
-                    className='fixed bottom-4 right-4 text-white p-2 shadow-lg transition duration-300'
+                    className='fixed bottom-4 right-4 text-white p-2 transition duration-300'
                     aria-label='Scroll to top'
                 >
                     <img

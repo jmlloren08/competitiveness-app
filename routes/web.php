@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BReadyDoingBusinessReportController;
+use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CorruptionPerceptionsIndexController;
 use App\Http\Controllers\DigitalQualityOfLifeIndexController;
@@ -25,9 +26,12 @@ use App\Http\Controllers\WorldGovernanceIndicatorsController;
 use App\Http\Controllers\WorldTalentRankingController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Http;
 
 Route::get('/', function () {
-    return Inertia::render('HomePage');
+    return Inertia::render('HomePage', [
+        'openAiKey' => config('services.openai.api_key'),
+    ]);
 })->name('/');
 
 Route::get('/about', function () {
@@ -229,18 +233,11 @@ Route::get('/get-trade-lpi-indicator-ranking', [LogisticsPerformanceIndexControl
 // fetch data for chart and table to homepage
 Route::get('/phils-reports-ranking', [PhilippinesReportsRankingController::class, 'getPhilippinesReportsRanking']);
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// endpoint
 
 // disable the login and register url if someone try to modify the url in the browser
 Route::permanentRedirect('/404', '/login');
 Route::permanentRedirect('/404', '/register');
 Route::permanentRedirect('/404', '/password/reset');
-
+Route::permanentRedirect('/404', '/profile');
+Route::permanentRedirect('/404', '/dashboard');

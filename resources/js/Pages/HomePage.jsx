@@ -9,9 +9,8 @@ const NavBar = React.lazy(() => import('@/Components/NavBar'));
 const Footer = React.lazy(() => import('@/Components/Footer'));
 const PartnerLogos = React.lazy(() => import('@/Components/PartnerLogos'));
 const PhilippinesReportsRanking = React.lazy(() => import('@/Components/PhilippinesReportsRanking'));
-const Confetti = React.lazy(() => import('@/Components/Confetti'));
 
-export default function HomePage() {
+export default function HomePage({ poem }) {
 
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -25,7 +24,6 @@ export default function HomePage() {
     ) : (
         <>
             <Head title="Philippine Global Competitiveness Report Card" />
-            <Confetti />
             {/* Navigation */}
             <div className="min-h-screen bg-white-100">
                 <nav className="bg-white border-b border-gray-100">
@@ -109,7 +107,6 @@ export default function HomePage() {
                     <div className='max-w-6xl mx-auto shadow-lg p-6 rounded'>
                         <h2 className='text-white text-2xl text-center font-bold mb-6 bg-sky-900 p-5 rounded'>PHILIPPINES REPORTS RANKING</h2>
                         <PhilippinesReportsRanking />
-
                     </div>
                 </main>
                 <Footer />
