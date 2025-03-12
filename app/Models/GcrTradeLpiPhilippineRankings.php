@@ -24,4 +24,15 @@ class GcrTradeLpiPhilippineRankings extends Model
         'rank_in_asean',
         'remarks'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->report_name)) {
+                $model->report_name = 'Logistics Performance Index'; // Set default value
+            }
+        });
+    }
 }

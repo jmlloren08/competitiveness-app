@@ -21,6 +21,7 @@ class PhilippinesReportsRanking extends Model
         'source_publisher',
         'ranks',
         'remarks',
-        'as_of'
+        'as_of',
+        'route'
     ];
 }

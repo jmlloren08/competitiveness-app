@@ -24,4 +24,15 @@ class GcrGovernanceEfiPhilippineRankings extends Model
         'rank_in_asean',
         'remarks'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->report_name)) {
+                $model->report_name = 'Economic Freedom Index'; // Set default value
+            }
+        });
+    }
 }

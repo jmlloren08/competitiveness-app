@@ -24,4 +24,15 @@ class GcrEtiPisaPhilippineRankings extends Model
         'rank_in_asean',
         'remarks'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->report_name)) {
+                $model->report_name = 'Programme for International Student Assessment (PISA)'; // Set default value
+            }
+        });
+    }
 }

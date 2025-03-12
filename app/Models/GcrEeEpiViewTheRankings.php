@@ -20,4 +20,5 @@ class GcrEeEpiViewTheRankings extends Model
         'ee_epi_year',
         'ee_epi_economy'
     ];
+
 }

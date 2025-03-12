@@ -21,4 +21,16 @@ class GcrEtiWtrIndicatorRankings extends Model
         'country',
         'counts'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (!$model->country_id && $model->country) {
+                $model->country_id = \App\Models\GcrEtiWtrIndicatorRankings::where('country', $model->country)
+                    ->value('country_id');
+            }
+        });
+    }
 }
