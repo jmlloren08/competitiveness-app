@@ -28,7 +28,7 @@ class GcrDigitalDqliIrPhVsAseans extends Model
 
         static::creating(function ($model) {
             if (!$model->country_id && $model->country) {
-                $model->country_id = \App\Models\GcrDigitalDqliIrphVsAseans::where('country', $model->country)
+                $model->country_id = \App\Models\GcrDigitalDqliIrPhVsAseans::where('country', $model->country)
                     ->value('country_id');
             }
         });
