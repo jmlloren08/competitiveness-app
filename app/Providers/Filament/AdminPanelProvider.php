@@ -31,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->registration()
+            // ->registration()
             ->profile()
             ->userMenuItems([
                 'profile' => MenuItem::make()->label(fn () => Auth::user()->name),
